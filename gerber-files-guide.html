@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerber Files Explained: How to Export, Send & What Manufacturers Need (2026)</title>
+    <meta name="description" content="Everything about Gerber files for PCB manufacturing. How to export from KiCad, Eagle, Altium. What to send your manufacturer. Common mistakes to avoid.">
+    <link rel="canonical" href="https://mayio.cloud/gerber-files-guide">
+    <meta property="og:title" content="Gerber Files Explained — How to Export & What to Send">
+    <meta property="og:description" content="Complete guide to Gerber files. Export from any EDA tool. Send to any manufacturer.">
+    <meta property="article:published_time" content="2026-06-10">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Gerber Files Explained: How to Export, Send & What Manufacturers Need",
+        "author": { "@type": "Organization", "name": "Mayio PCB Manufacturing" },
+        "datePublished": "2026-06-10",
+        "publisher": { "@type": "Organization", "name": "Mayio", "url": "https://mayio.cloud" }
+    }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Georgia,'Times New Roman',serif;line-height:1.8;color:#222}nav{background:#1a1a2e;padding:15px 0;position:sticky;top:0;z-index:100}nav .nav-inner{max-width:800px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}nav .logo{color:#fff;font-size:1.5em;font-weight:700;text-decoration:none;font-family:-apple-system,sans-serif}nav .logo span{color:#25D366}nav .links a{color:#ccc;text-decoration:none;margin-left:20px;font-size:.9em;font-family:-apple-system,sans-serif}article{max-width:760px;margin:0 auto;padding:50px 20px}h1{font-size:2.1em;line-height:1.3;margin-bottom:15px;color:#1a1a2e}.meta{color:#888;font-size:.9em;margin-bottom:35px;font-family:-apple-system,sans-serif}h2{font-size:1.4em;margin:40px 0 15px;color:#1a1a2e;border-bottom:2px solid #25D366;padding-bottom:8px}h3{font-size:1.15em;margin:25px 0 10px;color:#333}p{margin-bottom:18px}ul,ol{margin:15px 0 15px 25px}li{margin-bottom:8px}.callout{background:#f0faf3;border-left:4px solid #25D366;padding:20px 25px;margin:25px 0;border-radius:0 8px 8px 0}.cta-inline{display:inline-block;background:#25D366;color:white;padding:10px 24px;border-radius:6px;text-decoration:none;font-family:-apple-system,sans-serif;font-weight:600;margin:10px 0}table{width:100%;border-collapse:collapse;margin:20px 0;font-family:-apple-system,sans-serif;font-size:.9em}th{background:#1a1a2e;color:white;padding:12px;text-align:left}td{padding:10px 12px;border-bottom:1px solid #eee}tr:nth-child(even){background:#f8f9fa}footer{background:#1a1a2e;color:#999;padding:30px 20px;text-align:center;font-size:.85em;font-family:-apple-system,sans-serif}footer a{color:#25D366;text-decoration:none}@media(max-width:768px){h1{font-size:1.5em}table{font-size:.8em}}
+    </style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="logo">Mayio<span>.</span></a><div class="links"><a href="/">Home</a><a href="/pcb-prototype-service.html">Prototype</a><a href="/pcb-assembly-service.html">Assembly</a><a href="https://wa.me/message/XHJGCF6MS56QC1">💬 WhatsApp</a></div></div></nav>
+
+<article>
+<h1>Gerber Files Explained: How to Export, Send & What Manufacturers Need</h1>
+<p class="meta">Published June 10, 2026 · By Mayio Engineering Team · 7 min read</p>
+
+<p>Gerber files are the universal language of PCB manufacturing. Every factory in the world — from Shenzhen to Germany to Ohio — reads the same format. If you can export Gerbers, you can get your board made anywhere.</p>
+
+<h2>What Are Gerber Files?</h2>
+<p>Gerber files describe each layer of your PCB as a separate image. Think of them like X-ray slices — one file for the top copper, one for bottom copper, one for silkscreen, one for solder mask, and so on.</p>
+
+<h2>What Files You Need to Send</h2>
+<table>
+    <thead><tr><th>File</th><th>What It Describes</th><th>Required?</th></tr></thead>
+    <tbody>
+        <tr><td>Top Copper (.gtl)</td><td>Top copper traces and pads</td><td>✅ Yes</td></tr>
+        <tr><td>Bottom Copper (.gbl)</td><td>Bottom copper traces and pads</td><td>✅ Yes (2-layer+)</td></tr>
+        <tr><td>Solder Mask Top (.gts)</td><td>Where solder mask is removed</td><td>✅ Yes</td></tr>
+        <tr><td>Solder Mask Bottom (.gbs)</td><td>Bottom solder mask openings</td><td>✅ Yes (2-layer+)</td></tr>
+        <tr><td>Silkscreen Top (.gto)</td><td>Component labels, logos</td><td>✅ Yes</td></tr>
+        <tr><td>Silkscreen Bottom (.gbo)</td><td>Bottom silkscreen</td><td>Optional</td></tr>
+        <tr><td>Paste Top (.gtp)</td><td>Solder paste stencil</td><td>For assembly</td></tr>
+        <tr><td>Paste Bottom (.gbp)</td><td>Bottom paste stencil</td><td>For assembly</td></tr>
+        <tr><td>Drill (.drl)</td><td>Hole positions and sizes</td><td>✅ Yes</td></tr>
+        <tr><td>Board Outline (.gko)</td><td>Board edge cuts</td><td>✅ Yes</td></tr>
+    </tbody>
+</table>
+
+<h2>How to Export from Popular EDA Tools</h2>
+
+<h3>KiCad</h3>
+<ol>
+    <li>Open your PCB layout</li>
+    <li>File → Fabrication Outputs → Gerbers (.gbr)</li>
+    <li>Select all layers you need</li>
+    <li>Then: File → Fabrication Outputs → Drill Files (.drl)</li>
+    <li>Zip everything into one file</li>
+</ol>
+
+<h3>Eagle</h3>
+<ol>
+    <li>File → CAM Processor</li>
+    <li>Select "gerber" from the job dropdown</li>
+    <li>Process Job → save all files</li>
+    <li>Zip into one file</li>
+</ol>
+
+<h3>Altium Designer</h3>
+<ol>
+    <li>File → Fabrication Outputs → Gerber Files</li>
+    <li>Set units and format (mm, 4:4 is standard)</li>
+    <li>Select all layers</li>
+    <li>Run → then File → Fabrication Outputs → NC Drill Files</li>
+    <li>Zip everything</li>
+</ol>
+
+<h3>EasyEDA</h3>
+<ol>
+    <li>File → PCB Fabrication File (Gerber)</li>
+    <li>Download the zip directly</li>
+    <li>Ready to send</li>
+</ol>
+
+<h2>Common Mistakes</h2>
+
+<h3>1. Sending Screenshots Instead of Gerbers</h3>
+<p>A screenshot of your PCB layout in your EDA tool is not a Gerber file. The factory cannot manufacture from a screenshot. Always export properly.</p>
+
+<h3>2. Missing Drill File Units</h3>
+<p>If your Gerber is in mm but your drill file is in mils, the holes will be 25.4× too far apart (or too close). Always check: File → Drill Setup → Units should match your Gerber units.</p>
+
+<h3>3. No Board Outline</h3>
+<p>If the factory can't see where to cut, they'll ask. This adds a day. Make sure your Edge.Cuts layer is exported.</p>
+
+<h3>4. Forgetting Inner Layers (4+ Layer)</h3>
+<p>For 4-layer boards, you need inner copper layers (.gl2, .gl3). Missing these means the factory has to guess your stackup.</p>
+
+<h3>5. Not Zipping Everything</h3>
+<p>Send one zip file with all Gerbers + drill files. Not individual files. Not a RAR. One .zip.</p>
+
+<div class="callout">
+    <strong>Pro tip:</strong> Before sending to the manufacturer, open your Gerber zip in a free viewer like [Gerber Viewer](https://www.gerber-viewer.com/) or the Ucamco reference viewer. Visually confirm all layers are present and look correct.
+</div>
+
+<h2>What Your Manufacturer Does With Them</h2>
+<ol>
+    <li><strong>Import & Parse</strong> — Load all Gerber layers into their CAM software</li>
+    <li><strong>DFM Check</strong> — Run design for manufacturability checks</li>
+    <li><strong>Panelization</strong> — Arrange boards on a manufacturing panel for efficiency</li>
+    <li><strong>Generate Phototooling</strong> — Create the masks used to etch copper</li>
+    <li><strong>Quote</strong> — Calculate pricing based on layer count, size, quantity, and specs</li>
+</ol>
+
+<h2>Ready to Get a Quote?</h2>
+<p>Send your Gerber zip files to us. We'll review them by hand, provide a quote within 24 hours, and flag any issues before production starts.</p>
+<a href="https://wa.me/message/XHJGCF6MS56QC1" class="cta-inline">💬 Send Gerber Files on WhatsApp</a>
+
+<p style="margin-top:30px;color:#666;">Related: <a href="/pcb-cost-guide.html">PCB Cost Guide</a> · <a href="/pcb-prototype-service.html">Prototype Service</a> · <a href="/how-to-manufacture-pcb-china.html">Manufacturing in China</a></p>
+</article>
+<footer><p>© 2026 Mayio PCB Manufacturing. Factory-direct from Shenzhen. | <a href="mailto:jsdg@mayio.cloud">jsdg@mayio.cloud</a> | <a href="https://wa.me/message/XHJGCF6MS56QC1">WhatsApp</a></p></footer>
+</body>
+</html>

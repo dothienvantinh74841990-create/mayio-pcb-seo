@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common PCB Design Mistakes: 10 Ways Engineers Waste Money on Prototypes (2026)</title>
+    <meta name="description" content="Engineers make these PCB design mistakes all the time. How to avoid re-spins, save money on prototypes, and catch issues before manufacturing.">
+    <link rel="canonical" href="https://mayio.cloud/pcb-design-mistakes">
+    <meta property="og:title" content="10 Common PCB Design Mistakes Engineers Make">
+    <meta property="article:published_time" content="2026-06-10">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "10 Common PCB Design Mistakes That Waste Your Money",
+        "author": { "@type": "Organization", "name": "Mayio PCB Manufacturing" },
+        "datePublished": "2026-06-10",
+        "publisher": { "@type": "Organization", "name": "Mayio", "url": "https://mayio.cloud" }
+    }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Georgia,'Times New Roman',serif;line-height:1.8;color:#222}nav{background:#1a1a2e;padding:15px 0;position:sticky;top:0;z-index:100}nav .nav-inner{max-width:800px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}nav .logo{color:#fff;font-size:1.5em;font-weight:700;text-decoration:none;font-family:-apple-system,sans-serif}nav .logo span{color:#25D366}nav .links a{color:#ccc;text-decoration:none;margin-left:20px;font-size:.9em;font-family:-apple-system,sans-serif}article{max-width:760px;margin:0 auto;padding:50px 20px}h1{font-size:2.1em;line-height:1.3;margin-bottom:15px;color:#1a1a2e}.meta{color:#888;font-size:.9em;margin-bottom:35px;font-family:-apple-system,sans-serif}h2{font-size:1.35em;margin:35px 0 10px;color:#1a1a2e}p{margin-bottom:18px}ul,ol{margin:15px 0 15px 25px}li{margin-bottom:8px}.callout{background:#f0faf3;border-left:4px solid #25D366;padding:20px 25px;margin:25px 0;border-radius:0 8px 8px 0}.warning{background:#fff8e1;border-left:4px solid #f9a825;padding:20px 25px;margin:25px 0;border-radius:0 8px 8px 0}.cta-inline{display:inline-block;background:#25D366;color:white;padding:10px 24px;border-radius:6px;text-decoration:none;font-family:-apple-system,sans-serif;font-weight:600;margin:10px 0}.mistake{padding:20px;margin:15px 0;border-radius:10px;border-left:4px solid #e74c3c;background:#fef9f8}.mistake h2{color:#c0392b;margin-top:0;font-size:1.2em;border-bottom:none}footer{background:#1a1a2e;color:#999;padding:30px 20px;text-align:center;font-size:.85em;font-family:-apple-system,sans-serif}footer a{color:#25D366;text-decoration:none}@media(max-width:768px){h1{font-size:1.5em}}
+    </style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="/" class="logo">Mayio<span>.</span></a><div class="links"><a href="/">Home</a><a href="/pcb-prototype-service.html">Prototype</a><a href="/pcb-assembly-service.html">Assembly</a><a href="https://wa.me/message/XHJGCF6MS56QC1">💬 WhatsApp</a></div></div></nav>
+<article>
+<h1>10 Common PCB Design Mistakes Engineers Make</h1>
+<p class="meta">Published June 10, 2026 · By Mayio Engineering Team · 6 min read</p>
+<p>As a PCB manufacturer, we see the same design mistakes every day. Here are the top 10 — and how to avoid them in your next prototype.</p>
+
+<div class="mistake"><h2>1. ❌ Drill-to-Copper Clearance Too Small</h2><p>The most common DFM issue. Holes too close to copper traces or pads can cause drill breakage or copper lifting. <strong>Fix:</strong> Keep at least 0.3mm between drill edge and any copper.</p></div>
+<div class="mistake"><h2>2. ❌ Wrong Drill File Units</h2><p>Design in mm. Export drill file in mils by accident. Result: holes are 25.4× off. <strong>Fix:</strong> Always check your drill file setup before export.</p></div>
+<div class="mistake"><h2>3. ❌ Missing Board Outline</h2><p>The factory can't figure out where to cut. They ask. You explain. A day lost. <strong>Fix:</strong> Export your Edge.Cuts layer with every Gerber run.</p></div>
+<div class="mistake"><h2>4. ❌ Copper Pours Without Tie Bars</h2><p>Large copper pours need proper thermal relief. Without it, you get soldering defects. <strong>Fix:</strong> Use spoke connections on all through-hole pads connected to pours.</p></div>
+<div class="mistake"><h2>5. ❌ Silkscreen Over Open Pads</h2><p>When you silkscreen over exposed copper or solder pads, it can interfere with soldering. <strong>Fix:</strong> Import your solder mask layer into silkscreen output and check for overlap.</p></div>
+<div class="mistake"><h2>6. ❌ Annular Ring Too Small</h2><p>The copper ring around a drill hole needs minimum width. Too small = ring breaks during drilling. <strong>Fix:</strong> Minimum 0.15mm annular ring for standard tolerance.</p></div>
+<div class="mistake"><h2>7. ❌ Fine Pitch Traces Too Close to Board Edge</h2><p>Routing traces within 0.3mm of the edge is risky. Board cutting can damage them. <strong>Fix:</strong> Keep all traces at least 0.5mm from the edge.</p></div>
+<div class="mistake"><h2>8. ❌ Using Custom Solder Mask Color</h2><p>Green is free. Black, white, yellow add cost. Some colors (like white) show defects more easily. <strong>Fix:</strong> Use green for prototypes. Custom colors only for production.</p></div>
+<div class="mistake"><h2>9. ❌ Not Running DRC Before Export</h2><p>Design Rule Check catches 90% of manufacturability issues. Skipping it is gambling. <strong>Fix:</strong> Run DRC with rules matching your manufacturer's capabilities.</p></div>
+<div class="mistake"><h2>10. ❌ Ordering 500pcs Before Testing 5</h2><p>The cost of a single re-spin at 500pcs = 100 orders of 5pcs. Always prototype first. <strong>Fix:</strong> Order 5-10pcs, test, validate, then scale.</p></div>
+
+<div class="callout"><strong>The good news:</strong> We catch all these issues in our free DFM review before you pay. But catching them in your design saves even more time. If you're unsure about your board, send us the files and we'll tell you what needs fixing.</div>
+
+<h2>Get Your Files Reviewed for Free</h2>
+<p>Send your Gerbers to us. We'll check every one of these potential issues and give you a full DFM report — at no cost. No obligation to order.</p>
+<a href="https://wa.me/message/XHJGCF6MS56QC1" class="cta-inline">💬 Send Files for Free DFM Review</a>
+<p style="margin-top:30px;color:#666;">Related: <a href="/gerber-files-guide.html">Gerber Files Guide</a> · <a href="/pcb-cost-guide.html">PCB Cost Guide</a> · <a href="/pcb-prototype-service.html">Prototype Service</a></p>
+</article>
+<footer><p>© 2026 Mayio PCB Manufacturing. Factory-direct from Shenzhen. | <a href="mailto:jsdg@mayio.cloud">jsdg@mayio.cloud</a> | <a href="https://wa.me/message/XHJGCF6MS56QC1">WhatsApp</a></p></footer>
+</body>
+</html>
