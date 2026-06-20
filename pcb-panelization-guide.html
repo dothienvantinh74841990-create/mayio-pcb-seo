@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCB Panelization Guide | V-Score vs Tab Routing | How to Panelize PCB | Mayio</title>
+    <meta name="description" content="Complete guide to PCB panelization. Learn V-score, tab routing &amp; mouse bites. Save 40–60% on manufacturing costs with proper panel design. Expert DFM tips included.">
+    <meta name="keywords" content="PCB panelization, how to panelize PCB, V-score vs tab routing, PCB panel design, mouse bites, breakaway tabs">
+    <link rel="canonical" href="https://mayio.cloud/pcb-panelization-guide.html">
+    <meta property="og:title" content="PCB Panelization Guide | V-Score vs Tab Routing | Mayio">
+    <meta property="og:description" content="Complete guide to PCB panelization. Save 40–60% on manufacturing costs with proper panel design. V-score, tab routing &amp; mouse bites explained.">
+    <meta property="og:url" content="https://mayio.cloud/pcb-panelization-guide.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mayio PCB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PCB Panelization Guide | Mayio">
+    <meta name="twitter:description" content="Complete guide to PCB panelization. Save 40–60% on manufacturing costs with V-score, tab routing &amp; mouse bites.">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Mayio PCB Manufacturing",
+        "url": "https://mayio.cloud",
+        "logo": "https://mayio.cloud/logo.png",
+        "description": "PCB panelization services, V-score, tab routing, mouse bites from China",
+        "email": "jsdg@mayio.cloud",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "CN"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is PCB panelization?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PCB panelization is the process of combining multiple individual PCB designs onto a single larger board (panel) for manufacturing and assembly. This allows multiple boards to be processed simultaneously through automated SMT assembly lines, significantly reducing per-board costs and improving production efficiency."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is V-score vs tab routing?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "V-score uses a V-shaped groove cut partially through the board (typically 1/3 from each side), allowing boards to be snapped apart along straight lines. Tab routing uses small tabs (mouse bites) with drilled holes to connect boards to the panel frame, allowing separation by breaking the tabs. V-score is faster and cheaper but only works with straight cuts; tab routing supports complex board outlines."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does panelization save on PCB costs?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Panelization can save 40–60% on manufacturing costs compared to ordering individual boards. The savings come from: (1) reduced setup/panelization fees per board, (2) lower per-board pricing at higher quantities, (3) faster assembly throughput on SMT lines, and (4) reduced handling and shipping costs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the optimal panel size?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The optimal panel size depends on your SMT assembly line capabilities. Most manufacturers support panel sizes up to 250×330mm (10×13 inches). We recommend designing panels to maximize board count while leaving adequate edge rails (5mm minimum) for conveyor handling and tooling holes for alignment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I mix different board designs on one panel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, this is called a 'mixed panel' or 'multi-design panel.' You can place different board designs on the same panel as long as they share the same board thickness and copper weight. This is ideal when you need small quantities of multiple designs. Additional charges may apply for multi-design panelization."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height: 1.6; color: #333; }
+        .nav { background: #1a1a2e; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { color: #fff; font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+        .nav-logo span { color: #25D366; }
+        .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: #25D366; }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 5rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero h1 span { color: #25D366; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.9; }
+        .hero-cta { display: inline-block; background: #25D366; color: #fff; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        .section { padding: 5rem 2rem; }
+        .section-alt { background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.2rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .section-title p { color: #666; font-size: 1.1rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.3rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .feature-card p { color: #666; font-size: 0.95rem; }
+        .pricing-table { width: 100%; border-collapse: collapse; margin: 2rem 0; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .pricing-table th { background: #1a1a2e; color: #fff; padding: 1rem; text-align: left; font-weight: 600; }
+        .pricing-table td { padding: 1rem; border-bottom: 1px solid #eee; }
+        .pricing-table tr:hover { background: #f0fdf4; }
+        .pricing-table .price { color: #25D366; font-weight: 700; font-size: 1.1rem; }
+        .pricing-table .popular { background: #25D366; color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; counter-reset: step; }
+        .process-step { text-align: center; padding: 2rem 1rem; }
+        .process-step::before { counter-increment: step; content: counter(step); display: block; width: 60px; height: 60px; background: #25D366; color: #fff; border-radius: 50%; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem; line-height: 60px; }
+        .process-step h3 { font-size: 1.1rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .process-step p { color: #666; font-size: 0.9rem; }
+        .faq-item { background: #fff; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden; }
+        .faq-question { padding: 1.5rem; cursor: pointer; font-weight: 600; color: #1a1a2e; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: #25D366; transition: transform 0.3s; }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s; }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 1.5rem 1.5rem; }
+        .faq-answer p { color: #666; line-height: 1.8; }
+        .cta-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 5rem 2rem; text-align: center; }
+        .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; opacity: 0.9; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-whatsapp { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #fff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s; }
+        .btn-whatsapp:hover { transform: translateY(-2px); }
+        .btn-email { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #fff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 2px solid #fff; transition: background 0.3s; }
+        .btn-email:hover { background: rgba(255,255,255,0.1); }
+        .footer { background: #0f0f23; color: #999; padding: 3rem 2rem; text-align: center; }
+        .footer a { color: #25D366; text-decoration: none; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #1a1a2e; padding: 1rem 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .pricing-table { font-size: 0.85rem; display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="https://mayio.cloud" class="nav-logo">Mayio<span>.cloud</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+            <div class="nav-links">
+                <a href="https://mayio.cloud/cheap-pcb-china.html">Cheap PCB China</a>
+                <a href="https://mayio.cloud/pcb-prototype-service.html">Prototype</a>
+                <a href="https://mayio.cloud/pcb-assembly-service.html">Assembly</a>
+                <a href="https://mayio.cloud/pcb-panelization-guide.html">Panelization</a>
+                <a href="https://mayio.cloud/pcb-stencil-ordering.html">Stencils</a>
+                <a href="https://mayio.cloud/pcba-manufacturer-china.html">PCBA China</a>
+                <a href="https://mayio.cloud/pcb-cost-guide.html">Cost Guide</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>The Complete <span>PCB Panelization</span> Guide</h1>
+        <p>Master V-score, tab routing &amp; mouse bites. Save 40–60% on manufacturing and assembly costs with proper panel design.</p>
+        <a href="https://wa.me/message/XHJGCF6MS56QC1" class="hero-cta">Get Panelization Quote</a>
+    </section>
+
+    <!-- What is Panelization -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Is PCB Panelization?</h2>
+                <p>The key to cost-effective manufacturing and assembly</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; line-height: 1.8; color: #555;">
+                <p>PCB panelization is the process of arranging multiple individual PCB designs onto a single larger board (panel) for manufacturing and automated assembly. Instead of processing each board separately — with individual setups, stencil prints, and pick-and-place cycles — panelization allows dozens or hundreds of boards to be fabricated and assembled simultaneously.</p>
+                <br>
+                <p>Panelization is essential for two reasons: <strong>cost reduction</strong> and <strong>assembly efficiency</strong>. Manufacturing a panel of 20 boards costs only slightly more than manufacturing a single board, reducing per-board costs by 40–60%. For SMT assembly, panels enable high-speed automated placement, drastically reducing assembly time and cost per board.</p>
+                <br>
+                <p>After fabrication and assembly, individual boards are separated from the panel using one of several methods: V-scoring, tab routing, or a combination of both. The choice of separation method depends on your board outline, component placement, and production volume.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panelization Methods -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title">
+                <h2>Panelization Methods Compared</h2>
+                <p>Choosing the right method for your design</p>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Best For</th>
+                            <th>Pros</th>
+                            <th>Cons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>V-Score</strong></td>
+                            <td>Rectangular boards, high volume</td>
+                            <td>Fastest, cheapest, cleanest edge. Minimal waste.</td>
+                            <td>Only straight cuts. 1/3 board thickness removed per side. Can't route around components.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tab Routing</strong></td>
+                            <td>Complex outlines, mixed shapes</td>
+                            <td>Supports any board outline. Components can overhang edges.</td>
+                            <td>Slower, more expensive. Tabs leave small nubs on board edge.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mouse Bites</strong></td>
+                            <td>Small boards, prototyping</td>
+                            <td>Easy separation, no special tools needed. Good for hand assembly.</td>
+                            <td>Weaker connection. May leave rough edges. Not ideal for high-speed assembly.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>V-Score + Tab</strong></td>
+                            <td>Mixed designs, optimal cost</td>
+                            <td>Combines cost savings of V-score with flexibility of tab routing.</td>
+                            <td>More complex panel design. Requires careful planning.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- DFM Tips -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Panelization DFM Tips</h2>
+                <p>Design rules for successful panelization</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>Edge Rails</h3>
+                    <p>Add 5mm edge rails on all sides for conveyor handling. Include 3–4 tooling holes (3.2mm diameter) for alignment during assembly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📏</div>
+                    <h3>V-Score Guidelines</h3>
+                    <p>V-score depth = 1/3 of board thickness per side. Keep components 5mm+ away from score lines. Minimum board length for V-score: 25mm.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Tab Routing Rules</h3>
+                    <p>Use 2–4 tabs per board edge. Tab width: 2–4mm for standard boards. Mouse bite holes: 0.5mm diameter, 0.75mm pitch.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚠️</div>
+                    <h3>Component Placement</h3>
+                    <p>Keep tall components (connectors, transformers) away from panel edges and score lines. Consider component weight for panel strength.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Fiducials</h3>
+                    <p>Add 2–3 panel fiducials (1mm copper, 2mm keepout) for SMT alignment. Place at corners for best accuracy across the panel.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Panel Array</h3>
+                    <p>Optimize board count within panel dimensions. Leave 2–3mm between boards for routing. Consider board orientation for best copper balance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost Savings -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Much Can Panelization Save?</h2>
+                <p>Real-world cost comparison: individual vs. panelized</p>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Individual Boards</th>
+                            <th>Panelized (20-up)</th>
+                            <th>Savings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PCB Fabrication</strong><br>50×50mm, 2-layer, 1.6mm</td>
+                            <td>$3.00/pc × 200 = $600</td>
+                            <td class="price">$0.80/pc × 200 = $160</td>
+                            <td class="price">73%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SMT Assembly</strong><br>50 components, standard parts</td>
+                            <td>$8.00/pc × 200 = $1,600</td>
+                            <td class="price">$2.50/pc × 200 = $500</td>
+                            <td class="price">69%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stencil Cost</strong></td>
+                            <td>$5.00 × 1 = $5</td>
+                            <td class="price">$15.00 × 1 = $15</td>
+                            <td>-$10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total (200 boards)</strong></td>
+                            <td><strong>$2,205</strong></td>
+                            <td class="price"><strong>$675</strong></td>
+                            <td class="price"><strong>$1,530 (70%)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: center; color: #666; margin-top: 1rem;">* Actual savings depend on board size, component count, and assembly complexity. Contact us for a detailed quote.</p>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Panelization Process</h2>
+                <p>Expert panel design for optimal cost and quality</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3>Design Review</h3>
+                    <p>We analyze your board outline, component placement, and production requirements to recommend the optimal panelization method.</p>
+                </div>
+                <div class="process-step">
+                    <h3>Panel Layout</h3>
+                    <p>Our engineers create the panel array with edge rails, tooling holes, fiducials, and separation features (V-score/tabs).</p>
+                </div>
+                <div class="process-step">
+                    <h3>DFM Verification</h3>
+                    <p>We verify clearances, tab strength, V-score depth, and component clearances. You approve the panel design before manufacturing.</p>
+                </div>
+                <div class="process-step">
+                    <h3>Manufacture &amp; Ship</h3>
+                    <p>Full panel fabrication, assembly, and testing. Individual boards separated (or shipped as panels per your preference).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Expert answers about PCB panelization</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">What is PCB panelization?</div>
+                    <div class="faq-answer"><p>PCB panelization is the process of combining multiple individual PCB designs onto a single larger board (panel) for manufacturing and assembly. This allows multiple boards to be processed simultaneously through automated SMT assembly lines, significantly reducing per-board costs and improving production efficiency.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">What is V-score vs tab routing?</div>
+                    <div class="faq-answer"><p>V-score uses a V-shaped groove cut partially through the board (typically 1/3 from each side), allowing boards to be snapped apart along straight lines. Tab routing uses small tabs (mouse bites) with drilled holes to connect boards to the panel frame, allowing separation by breaking the tabs. V-score is faster and cheaper but only works with straight cuts; tab routing supports complex board outlines.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">How much does panelization save on PCB costs?</div>
+                    <div class="faq-answer"><p>Panelization can save 40–60% on manufacturing costs compared to ordering individual boards. The savings come from: (1) reduced setup/panelization fees per board, (2) lower per-board pricing at higher quantities, (3) faster assembly throughput on SMT lines, and (4) reduced handling and shipping costs.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">What is the optimal panel size?</div>
+                    <div class="faq-answer"><p>The optimal panel size depends on your SMT assembly line capabilities. Most manufacturers support panel sizes up to 250×330mm (10×13 inches). We recommend designing panels to maximize board count while leaving adequate edge rails (5mm minimum) for conveyor handling and tooling holes for alignment.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">Can I mix different board designs on one panel?</div>
+                    <div class="faq-answer"><p>Yes, this is called a 'mixed panel' or 'multi-design panel.' You can place different board designs on the same panel as long as they share the same board thickness and copper weight. This is ideal when you need small quantities of multiple designs. Additional charges may apply for multi-design panelization.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Need Help With PCB Panelization?</h2>
+        <p>Our engineers will optimize your panel design for maximum cost savings and assembly efficiency.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/message/XHJGCF6MS56QC1" class="btn-whatsapp">💬 Chat on WhatsApp</a>
+            <a href="mailto:jsdg@mayio.cloud" class="btn-email">✉️ jsdg@mayio.cloud</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Mayio PCB Manufacturing. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://mayio.cloud/pcb-prototype-service.html">Prototype</a> · 
+            <a href="https://mayio.cloud/pcb-assembly-service.html">Assembly</a> · 
+            <a href="https://mayio.cloud/pcb-panelization-guide.html">Panelization</a> · 
+            <a href="https://mayio.cloud/pcb-stencil-ordering.html">Stencils</a> · 
+            <a href="https://mayio.cloud/pcb-cost-guide.html">Cost Guide</a>
+        </p>
+    </footer>
+</body>
+</html>
