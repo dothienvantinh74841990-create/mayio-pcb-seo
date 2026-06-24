@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When to Use 2-Layer vs 4-Layer PCBs: Complete Guide | Mayio PCB</title>
+    <meta name="description" content="Decision guide for choosing between 2-layer and 4-layer PCBs. Cost, performance, impedance control, and EMI considerations.">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
+        .container { max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+        h1 { font-size: 28px; margin-bottom: 12px; }
+        .meta { color: #86868b; font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 20px; margin: 28px 0 12px; }
+        p { margin-bottom: 14px; }
+        .comparison { display: flex; gap: 16px; margin: 20px 0; }
+        .card { flex: 1; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .card h3 { font-size: 18px; margin-bottom: 8px; }
+        .card ul { padding-left: 18px; }
+        .card li { margin-bottom: 6px; font-size: 15px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; }
+        th { background: #f5f5f7; font-weight: 600; }
+        .cta { text-align: center; margin-top: 32px; padding: 24px; background: white; border-radius: 12px; }
+        .cta a { display: inline-block; padding: 12px 24px; background: #0071e3; color: white; text-decoration: none; border-radius: 8px; margin-top: 8px; }
+        footer { text-align: center; padding: 32px 0; color: #86868b; font-size: 13px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>When to Use 2-Layer vs 4-Layer PCBs</h1>
+    <p class="meta">Published June 2025 · 8 min read · By Mayio PCB Engineering</p>
+
+    <p>Choosing between a 2-layer and 4-layer PCB is one of the most common decisions hardware developers face. The wrong choice can cost you weeks and hundreds of dollars. Here's how to decide.</p>
+
+    <h2>The Quick Decision</h2>
+    <div class="comparison">
+        <div class="card">
+            <span class="badge badge-green">Simple Projects</span>
+            <h3>2-Layer PCB</h3>
+            <ul>
+                <li>Simple routing (few nets)</li>
+                <li>No high-speed signals (&lt;50MHz)</li>
+                <li>No strict impedance requirements</li>
+                <li>Budget-conscious</li>
+                <li>Prototype phase</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="badge badge-blue">Complex Projects</span>
+            <h3>4-Layer PCB</h3>
+            <ul>
+                <li>Dense routing (BGA, fine pitch)</li>
+                <li>High-speed signals (&gt;100MHz)</li>
+                <li>Impedance control needed</li>
+                <li>EMI-sensitive designs</li>
+                <li>Production-ready</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Cost Comparison</h2>
+    <table>
+        <tr><th>Quantity</th><th>2-Layer</th><th>4-Layer</th><th>Delta</th></tr>
+        <tr><td>5 pcs (100×100mm)</td><td>$2</td><td>$5</td><td>+150%</td></tr>
+        <tr><td>10 pcs</td><td>$3</td><td>$8</td><td>+167%</td></tr>
+        <tr><td>50 pcs</td><td>$12</td><td>$35</td><td>+192%</td></tr>
+        <tr><td>100 pcs</td><td>$20</td><td>$60</td><td>+200%</td></tr>
+    </table>
+    <p><strong>Note:</strong> Prices above are estimates from Shenzhen manufacturers. The cost gap narrows at higher volumes due to material being a smaller percentage of total cost.</p>
+
+    <h2>When You NEED 4 Layers</h2>
+    <ul style="margin: 12px 0; padding-left: 20px;">
+        <li><strong>BGA packages</strong> — Escape routing requires internal layers</li>
+        <li><strong>Differential pairs</strong> — USB, Ethernet, DDR require impedance control</li>
+        <li><strong>Power integrity</strong> — Dedicated power/ground planes reduce noise</li>
+        <li><strong>EMC compliance</strong> — FCC/CE certification is nearly impossible on 2-layer for complex designs</li>
+        <li><strong>High current</strong> — Internal planes can handle 3-5A per layer vs ~1A for outer traces</li>
+    </ul>
+
+    <h2>When 2 Layers Is Enough</h2>
+    <ul style="margin: 12px 0; padding-left: 20px;">
+        <li><strong>Arduino-style boards</strong> — Simple MCU + peripherals</li>
+        <li><strong>Sensor boards</strong> — I2C/SPI communication, low speed</li>
+        <li><strong>Power supply boards</strong> — Simple buck/boost converters</li>
+        <li><strong>Prototyping</strong> — Getting a concept working before committing to 4-layer</li>
+        <li><strong>IoT devices</strong> — Simple WiFi/BLE + sensors</li>
+    </ul>
+
+    <h2>The Hidden Cost of Going Cheap</h2>
+    <p>Going 2-layer to save $3 on a prototype sounds smart, until you discover:</p>
+    <ul style="margin: 12px 0; padding-left: 20px;">
+        <li>Routing takes 3x longer because you keep running into congestion</li>
+        <li>EMI issues appear only in production, requiring a respin</li>
+        <li>Signal integrity degrades at higher frequencies</li>
+        <li>You need ground stitching vias everywhere</li>
+    </ul>
+
+    <h2>Our Recommendation</h2>
+    <p>If your design has any of these, go 4-layer:</p>
+    <ul style="margin: 12px 0; padding-left: 20px;">
+        <li>More than 100 components</li>
+        <li>Any BGA or QFN with &gt;48 pins</li>
+        <li>Signals above 100MHz</li>
+        <li>Impedance matching requirements</li>
+        <li>EMC certification needed</li>
+    </ul>
+    <p>For simple boards, 2-layer saves money and is perfectly fine. Don't over-engineer what doesn't need it.</p>
+
+    <div class="cta">
+        <h2>Not Sure Which to Choose?</h2>
+        <p>Send us your schematic or Gerbers — we'll review for free and recommend the optimal layer count.</p>
+        <a href="https://wa.me/message/XHJGCF6MS56QC1">💬 Free Review on WhatsApp</a>
+    </div>
+    <footer><p>By <a href="https://mayio.cloud">Mayio PCB</a> — Shenzhen direct manufacturer</p></footer>
+</div>
+</body>
+</html>
