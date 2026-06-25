@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCB Surface Finish Explained: HASL vs ENIG vs OSP | Mayio PCB</title>
+    <meta name="description" content="Complete comparison of PCB surface finishes — HASL, lead-free HASL, ENIG, OSP, immersion silver, and immersion tin. Cost, solderability, shelf life, and when to use each.">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
+        .container { max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+        h1 { font-size: 28px; margin-bottom: 12px; }
+        .meta { color: #86868b; font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 20px; margin: 28px 0 12px; }
+        h3 { font-size: 17px; margin: 20px 0 8px; }
+        p { margin-bottom: 14px; }
+        ul { margin: 12px 0; padding-left: 20px; }
+        li { margin-bottom: 6px; font-size: 15px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; }
+        th { background: #f5f5f7; font-weight: 600; }
+        .cta { text-align: center; margin-top: 32px; padding: 24px; background: white; border-radius: 12px; }
+        .cta a { display: inline-block; padding: 12px 24px; background: #0071e3; color: white; text-decoration: none; border-radius: 8px; margin-top: 8px; }
+        footer { text-align: center; padding: 32px 0; color: #86868b; font-size: 13px; }
+        nav { margin-bottom: 20px; font-size: 14px; }
+        nav a { color: #0071e3; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav><a href="index.html">← Home</a></nav>
+    <h1>PCB Surface Finish: HASL vs ENIG vs OSP</h1>
+    <p class="meta">Published June 2026 · 8 min read · By Mayio PCB Engineering</p>
+
+    <p>Surface finish is one of the most overlooked PCB specifications — and one of the most consequential. The wrong choice means solder joints that won't stick, pads that oxidize before assembly, or paying $2/sqft for gold you don't need. Here's how to pick the right one.</p>
+
+    <h2>Why Surface Finish Matters</h2>
+    <p>Raw copper oxidizes within minutes of exposure to air. Oxidized copper doesn't solder properly — you get cold joints, poor wetting, and unreliable connections. Surface finish exists to protect the copper pads until soldering, and in some cases, to provide the actual soldering surface.</p>
+    <p>Every surface finish is a tradeoff between cost, solderability, shelf life, planarity, and thermal reliability. There is no single "best" finish — only the best one for your specific application.</p>
+
+    <h2>The Main Options</h2>
+
+    <h3>1. HASL (Hot Air Solder Leveling)</h3>
+    <p>The original surface finish. The board is dipped in molten solder (tin-lead or lead-free), then blown with hot air knives to remove excess. The result is a thick, solderable coating.</p>
+    <ul>
+        <li><strong>Cost:</strong> Lowest ($0.10-0.30/sqft)</li>
+        <li><strong>Solderability:</strong> Excellent — you're soldering onto actual solder</li>
+        <li><strong>Shelf life:</strong> 12+ months</li>
+        <li><strong>Planarity:</strong> Poor — the coating is uneven (50-100μm variation)</li>
+        <li><strong>Best for:</strong> Through-hole boards, consumer electronics, anything where cost matters more than fine-pitch placement</li>
+        <li><strong>Avoid for:</strong> Fine-pitch SMT (&lt;0.5mm pitch), BGA, press-fit connectors</li>
+    </ul>
+
+    <h3>2. Lead-Free HASL (HAL-LF)</h3>
+    <p>Same process as HASL, but using SAC305 (Sn96.5/Ag3.0/Cu0.5) instead of Sn63/Pb37. Required for RoHS compliance.</p>
+    <ul>
+        <li><strong>Cost:</strong> Low ($0.15-0.35/sqft)</li>
+        <li><strong>Solderability:</strong> Very good</li>
+        <li><strong>Planarity:</strong> Slightly worse than leaded HASL (higher melting point = more viscous)</li>
+        <li><strong>Best for:</strong> RoHS-compliant consumer products with moderate pitch requirements</li>
+    </ul>
+
+    <h3>3. ENIG (Electroless Nickel Immersion Gold)</h3>
+    <p>A layer of electroless nickel (3-6μm) topped with a thin gold flash (0.05-0.1μm). The nickel provides the actual soldering surface; the gold protects the nickel from oxidation during storage.</p>
+    <ul>
+        <li><strong>Cost:</strong> Medium ($0.50-1.50/sqft)</li>
+        <li><strong>Solderability:</strong> Excellent initial solderability</li>
+        <li><strong>Shelf life:</strong> 12+ months</li>
+        <li><strong>Planarity:</strong> Excellent — perfect for fine-pitch and BGA</li>
+        <li><strong>Best for:</strong> BGA, fine-pitch SMT (&lt;0.5mm), gold wire bonding, press-fit connectors</li>
+        <li><strong>Avoid for:</strong> High-reliability military/aerospace (black pad risk), flex circuits</li>
+    </ul>
+
+    <h3>4. OSP (Organic Solderability Preservative)</h3>
+    <p>A thin organic compound (typically benzimidazole-based) that bonds to the copper surface and prevents oxidation. It's not really a "finish" — it's a molecular layer that burns off during soldering, exposing clean copper.</p>
+    <ul>
+        <li><strong>Cost:</strong> Very low ($0.05-0.15/sqft)</li>
+        <li><strong>Solderability:</strong> Good when fresh, degrades with exposure</li>
+        <li><strong>Shelf life:</strong> 3-6 months (shortest of all finishes)</li>
+        <li><strong>Planarity:</strong> Excellent — no added thickness</li>
+        <li><strong>Best for:</strong> High-volume consumer electronics with fast turnaround, fine-pitch, lead-free compliant</li>
+        <li><strong>Avoid for:</strong> Any board that will sit on a shelf, multiple reflow cycles, selective soldering</li>
+    </ul>
+
+    <h3>5. Immersion Silver</h3>
+    <p>A thin layer of silver (0.1-0.3μm) deposited chemically. Good planarity and excellent solderability, but tarnishes if not stored properly.</p>
+    <ul>
+        <li><strong>Cost:</strong> Medium-low ($0.20-0.50/sqft)</li>
+        <li><strong>Solderability:</strong> Excellent</li>
+        <li><strong>Shelf life:</strong> 6-12 months</li>
+        <li><strong>Planarity:</strong> Excellent</li>
+        <li><strong>Best for:</strong> High-frequency RF boards (silver has lower skin effect loss than nickel), fine-pitch, OSP alternative</li>
+        <li><strong>Avoid for:</strong> Humid environments (tarnishing), boards requiring wire bonding</li>
+    </ul>
+
+    <h3>6. Immersion Tin</h3>
+    <p>A thin tin layer (0.8-1.2μm) that provides good solderability. Tin whiskers are a concern for high-reliability applications.</p>
+    <ul>
+        <li><strong>Cost:</strong> Low-medium ($0.15-0.40/sqft)</li>
+        <li><strong>Solderability:</strong> Good</li>
+        <li><strong>Shelf life:</strong> 6-12 months</li>
+        <li><strong>Best for:</strong> Press-fit connectors, cost-sensitive fine-pitch designs</li>
+        <li><strong>Avoid for:</strong> High-reliability (tin whisker risk), high-temperature environments</li>
+    </ul>
+
+    <h2>Comparison Table</h2>
+    <table>
+        <tr><th>Finish</th><th>Cost</th><th>Planarity</th><th>Solderability</th><th>Shelf Life</th><th>Fine Pitch</th></tr>
+        <tr><td>HASL</td><td>$</td><td>Poor</td><td>Excellent</td><td>12+ months</td><td>No</td></tr>
+        <tr><td>Lead-Free HASL</td><td>$</td><td>Fair</td><td>Very good</td><td>12+ months</td><td>Marginal</td></tr>
+        <tr><td>ENIG</td><td>$$</td><td>Excellent</td><td>Excellent</td><td>12+ months</td><td>Yes</td></tr>
+        <tr><td>OSP</td><td>$</td><td>Excellent</td><td>Good*</td><td>3-6 months</td><td>Yes</td></tr>
+        <tr><td>Imm. Silver</td><td>$$</td><td>Excellent</td><td>Excellent</td><td>6-12 months</td><td>Yes</td></tr>
+        <tr><td>Imm. Tin</td><td>$</td><td>Very good</td><td>Good</td><td>6-12 months</td><td>Yes</td></tr>
+    </table>
+    <p style="font-size: 13px; color: #86868b;">* OSP solderability degrades with time and multiple reflow passes</p>
+
+    <h2>Decision Flowchart</h2>
+    <ul>
+        <li><strong>Fine pitch (&lt;0.5mm) or BGA?</strong> → ENIG or OSP</li>
+        <li><strong>Through-hole only, cost matters?</strong> → HASL (leaded or lead-free)</li>
+        <li><strong>RoHS required?</strong> → Lead-free HASL, ENIG, OSP, or Imm. Silver/Tin</li>
+        <li><strong>High-frequency / RF?</strong> → Immersion Silver</li>
+        <li><strong>Wire bonding needed?</strong> → ENIG (gold flash is bondable)</li>
+        <li><strong>Shelf life &gt; 6 months?</strong> → ENIG or HASL (avoid OSP)</li>
+        <li><strong>Multiple reflow passes?</strong> → ENIG or HASL (OS degrades)</li>
+        <li><strong>Budget is everything?</strong> → OSP (cheapest) or HASL</li>
+    </ul>
+
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li><strong>Choosing ENIG for everything</strong> — It's the "safe" choice, but you're paying 3-5x more than HASL for boards that don't need it.</li>
+        <li><strong>Using OSP for small-batch prototyping</strong> — By the time you receive the boards and assemble them, OSP may have degraded. Use HASL for prototyping, OSP for high-volume production with fast turnaround.</li>
+        <li><strong>Ignoring black pad risk with ENIG</strong> — If your ENIG process has poor nickel plating, the gold-nickel interface can develop "black pad" — a corrosion layer that causes solder joint failure. Ask your manufacturer about their ENIG process control.</li>
+        <li><strong>Forgetting about selective soldering</strong> — If you have mixed through-hole and SMT, selective soldering can damage OSP and thin finishes. HASL is most robust for mixed technology.</li>
+    </ul>
+
+    <div class="cta">
+        <h3>Not Sure Which Finish?</h3>
+        <p>Send us your Gerber files and we'll recommend the optimal surface finish for your application. Free DRC check included.</p>
+        <a href="https://wa.me/message/XHJGCF6MS56QC1">💬 Get Expert Advice</a>
+        <p style="margin-top: 12px; font-size: 14px; color: #86868b;">Or email: jsdg@mayio.cloud</p>
+    </div>
+
+    <footer>
+        <p><a href="index.html" style="color: #86868b;">Mayio PCB</a> · Shenzhen-based PCB manufacturer · <a href="aluminum-pcb-vs-fr4.html" style="color: #86868b;">Aluminum vs FR4</a> · <a href="pcb-layer-count-guide.html" style="color: #86868b;">Layer Count Guide</a></p>
+    </footer>
+</div>
+</body>
+</html>

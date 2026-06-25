@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluminum PCB vs FR4: When to Use Metal Core PCBs | Mayio PCB</title>
+    <meta name="description" content="Complete comparison of aluminum metal core PCBs vs standard FR4. Thermal conductivity, cost, use cases, and manufacturing considerations for power electronics and LED applications.">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
+        .container { max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+        h1 { font-size: 28px; margin-bottom: 12px; }
+        .meta { color: #86868b; font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 20px; margin: 28px 0 12px; }
+        h3 { font-size: 17px; margin: 20px 0 8px; }
+        p { margin-bottom: 14px; }
+        ul { margin: 12px 0; padding-left: 20px; }
+        li { margin-bottom: 6px; font-size: 15px; }
+        .comparison { display: flex; gap: 16px; margin: 20px 0; }
+        .card { flex: 1; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .card h3 { font-size: 18px; margin-bottom: 8px; }
+        .card ul { padding-left: 18px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .badge-orange { background: #fff3e0; color: #e65100; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; }
+        th { background: #f5f5f7; font-weight: 600; }
+        .cta { text-align: center; margin-top: 32px; padding: 24px; background: white; border-radius: 12px; }
+        .cta a { display: inline-block; padding: 12px 24px; background: #0071e3; color: white; text-decoration: none; border-radius: 8px; margin-top: 8px; }
+        footer { text-align: center; padding: 32px 0; color: #86868b; font-size: 13px; }
+        nav { margin-bottom: 20px; font-size: 14px; }
+        nav a { color: #0071e3; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav><a href="index.html">← Home</a></nav>
+    <h1>Aluminum PCB vs FR4: When to Use Metal Core</h1>
+    <p class="meta">Published June 2026 · 7 min read · By Mayio PCB Engineering</p>
+
+    <p>If you're designing power electronics, LED lighting, or anything that generates serious heat, you've probably wondered: should I use an aluminum PCB or stick with FR4? The answer isn't always obvious — and the wrong choice can mean thermal failure or unnecessary cost.</p>
+
+    <h2>What Is an Aluminum PCB?</h2>
+    <p>An aluminum PCB (also called metal core PCB or MCPCB) replaces the standard FR4 dielectric core with a thin thermally conductive dielectric layer bonded to an aluminum base plate. The aluminum acts as a heat spreader, pulling thermal energy away from components and dissipating it across the board's surface.</p>
+    <p>The structure looks like this: copper traces on top, a thin dielectric layer (typically 75-150μm), and then the aluminum base (0.5-3mm). Some designs use copper cores instead of aluminum for even higher thermal performance, but aluminum is the standard for cost-sensitive applications.</p>
+
+    <h2>Thermal Performance: The Numbers</h2>
+    <table>
+        <tr><th>Property</th><th>FR4</th><th>Aluminum PCB</th></tr>
+        <tr><td>Thermal conductivity</td><td>0.3-0.5 W/mK</td><td>1.0-3.0 W/mK (dielectric)</td></tr>
+        <tr><td>Aluminum base conductivity</td><td>N/A</td><td>~200 W/mK</td></tr>
+        <tr><td>Max operating temp</td><td>130-140°C</td><td>150°C+ (depends on dielectric)</td></tr>
+        <tr><td>Thermal resistance (typical)</td><td>20-40 °C/W</td><td>0.5-3 °C/W</td></tr>
+    </table>
+    <p>The difference is dramatic. A 1W LED running on FR4 might hit 85°C junction temperature. The same LED on aluminum drops to 45°C. That's the difference between a 50,000-hour lifespan and early failure.</p>
+
+    <h2>When Aluminum PCBs Make Sense</h2>
+    <div class="comparison">
+        <div class="card">
+            <span class="badge badge-green">Use Aluminum</span>
+            <h3>Best Applications</h3>
+            <ul>
+                <li><strong>LED lighting</strong> — High-power LED arrays generate 5-15W per module. Aluminum spreads heat across the board.</li>
+                <li><strong>Power supplies</strong> — MOSFETs, inductors, and rectifiers running at 50W+ benefit from direct thermal paths.</li>
+                <li><strong>Automotive electronics</strong> — Engine bay, headlight drivers, EV battery management systems.</li>
+                <li><strong>Motor controllers</strong> — H-bridge drivers and gate drivers with significant switching losses.</li>
+                <li><strong>Audio amplifiers</strong> — Class D amp output stages generate concentrated heat.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="badge badge-blue">Stick with FR4</span>
+            <h3>When FR4 Wins</h3>
+            <ul>
+                <li><strong>Digital logic</strong> — MCUs, FPGAs with adequate airflow don't need metal core.</li>
+                <li><strong>Low-power sensors</strong> — Milliwatt-level designs don't generate meaningful heat.</li>
+                <li><strong>Complex routing</strong> — Multi-layer digital boards with fine-pitch BGA.</li>
+                <li><strong>Cost-critical high-volume</strong> — FR4 is 3-5x cheaper at scale.</li>
+                <li><strong>Rigid-flex designs</strong> — Metal core incompatible with flex sections.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Cost Comparison</h2>
+    <table>
+        <tr><th>Spec (100×100mm, 1.6mm)</th><th>FR4</th><th>Aluminum PCB</th></tr>
+        <tr><td>5 pcs prototype</td><td>$2</td><td>$8-12</td></tr>
+        <tr><td>50 pcs</td><td>$12</td><td>$30-45</td></tr>
+        <tr><td>500 pcs</td><td>$80</td><td>$150-220</td></tr>
+        <tr><td>1000 pcs</td><td>$140</td><td>$250-380</td></tr>
+    </table>
+    <p><strong>The gap narrows at volume.</strong> At 1000+ units, aluminum is often only 2x the cost of FR4 — and the thermal benefit can eliminate the need for heatsinks, fans, or thermal pads, which often costs more than the board itself.</p>
+
+    <h2>Manufacturing Considerations</h2>
+    <h3>Design Rules</h3>
+    <ul>
+        <li>Minimum trace width: 0.15mm (same as FR4)</li>
+        <li>Minimum drill: 0.3mm (slightly larger than FR4 due to aluminum base)</li>
+        <li>Vias: Standard through-hole vias work, but note the aluminum base must be isolated</li>
+        <li>Copper weight: Typically 1oz (35μm), can go up to 3oz for high-current</li>
+    </ul>
+    <h3>What You Can't Do</h3>
+    <ul>
+        <li><strong>No buried/blind vias</strong> — Aluminum base makes sequential lamination impractical</li>
+        <li><strong>Limited to 1-2 copper layers</strong> — More than 2 layers is rare and expensive</li>
+        <li><strong>No plated through-hole on aluminum side</strong> — Requires special isolation processing</li>
+        <li><strong>Impedance control is tricky</strong> — The thin dielectric changes characteristic impedance calculations</li>
+    </ul>
+
+    <h2>Real-World Example: LED Panel Driver</h2>
+    <p>We recently helped a customer redesign their LED panel driver from FR4 to aluminum. The board had 24 high-power LEDs (0.5W each) plus a constant-current driver IC.</p>
+    <p><strong>On FR4:</strong> LEDs ran at 85°C junction temperature, driver IC hit 95°C. Board needed a separate aluminum heatsink plate + thermal pads. Total assembly cost: $4.20/unit.</p>
+    <p><strong>On aluminum PCB:</strong> LEDs ran at 42°C, driver IC at 55°C. No heatsink needed. Total assembly cost: $3.10/unit.</p>
+    <p>The aluminum board cost $2 more per unit. The eliminated heatsink saved $3.30. Net savings: $1.30/unit — and a simpler, more reliable product.</p>
+
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li><strong>Using aluminum for everything</strong> — If your board doesn't have a thermal problem, aluminum adds cost with no benefit.</li>
+        <li><strong>Ignoring the dielectric layer thickness</strong> — Thinner dielectric = better thermal transfer, but lower breakdown voltage. 75μm is typical for low-voltage; 150μm for mains-connected designs.</li>
+        <li><strong>Forgetting about weight</strong> — Aluminum boards are significantly heavier. Matters in aerospace and wearable applications.</li>
+        <li><strong>Designing like it's FR4</strong> — You need to think about thermal paths the way you'd think about signal integrity on FR4. Route heat-generating components over the aluminum base, not over cutouts.</li>
+    </ul>
+
+    <div class="cta">
+        <h3>Need Aluminum or FR4 PCBs?</h3>
+        <p>We manufacture both in Shenzhen with 24-hour quotes and 3-5 day turnaround. Send your Gerbers for a free DRC check and pricing.</p>
+        <a href="https://wa.me/message/XHJGCF6MS56QC1">💬 Get a Quote on WhatsApp</a>
+        <p style="margin-top: 12px; font-size: 14px; color: #86868b;">Or email: jsdg@mayio.cloud</p>
+    </div>
+
+    <footer>
+        <p><a href="index.html" style="color: #86868b;">Mayio PCB</a> · Shenzhen-based PCB manufacturer · <a href="pcb-layer-count-guide.html" style="color: #86868b;">Layer Count Guide</a></p>
+    </footer>
+</div>
+</body>
+</html>

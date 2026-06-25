@@ -1,0 +1,15 @@
+title: Just redesigned my Nixie Clock PCB for JLCPCB — sharing the layer stackup guide
+
+Hey r/PrintedCircuitBoard,
+
+Been working on a Nixie tube clock project (based on the NCM109/105/107 boards) and spent a lot of time figuring out the right layer count and stackup for these boards. Nixie tubes have some unique requirements — fine-pitch tube pins, gold finish for reliable contact, and tight socket alignment tolerances.
+
+Went with a 4-layer design in the end. Here's a writeup of the decision process and what I learned:
+
+https://mayio.cloud/nixie-clock-pcb.html
+
+Also put together a general PCB layer count guide if anyone's debating 2 vs 4 vs 6 layer for their next project:
+
+https://mayio.cloud/pcb-layer-count-guide.html
+
+Would love to hear how others approach Nixie clock PCBs — especially tube socket mounting and HV routing.

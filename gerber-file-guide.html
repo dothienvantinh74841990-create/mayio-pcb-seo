@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Read Gerber Files: A Practical Guide for Engineers | Mayio PCB</title>
+    <meta name="description" content="Learn how to read, verify, and troubleshoot Gerber files before sending to PCB fabrication. Covers file extensions, common mistakes, DRC checklist, and KiCad/Altium export tips.">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
+        .container { max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+        h1 { font-size: 28px; margin-bottom: 12px; }
+        .meta { color: #86868b; font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 20px; margin: 28px 0 12px; }
+        h3 { font-size: 17px; margin: 20px 0 8px; }
+        p { margin-bottom: 14px; }
+        ul { margin: 12px 0; padding-left: 20px; }
+        li { margin-bottom: 6px; font-size: 15px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; }
+        th { background: #f5f5f7; font-weight: 600; }
+        .cta { text-align: center; margin-top: 32px; padding: 24px; background: white; border-radius: 12px; }
+        .cta a { display: inline-block; padding: 12px 24px; background: #0071e3; color: white; text-decoration: none; border-radius: 8px; margin-top: 8px; }
+        footer { text-align: center; padding: 32px 0; color: #86868b; font-size: 13px; }
+        nav { margin-bottom: 20px; font-size: 14px; }
+        nav a { color: #0071e3; text-decoration: none; }
+        code { background: #f0f0f2; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav><a href="index.html">← Home</a></nav>
+    <h1>How to Read Gerber Files: Practical Guide</h1>
+    <p class="meta">Published June 2026 · 9 min read · By Mayio PCB Engineering</p>
+
+    <p>Gerber files are the universal language between PCB designers and manufacturers. If you've ever exported a ZIP from KiCad and wondered what's actually inside — or why your manufacturer keeps asking for "corrected Gerbers" — this guide breaks it all down.</p>
+
+    <h2>What Are Gerber Files?</h2>
+    <p>Gerber is an open standard (RS-274X and the newer X2) that describes each physical layer of a PCB as a 2D image. Think of it as a set of transparent overlays — one for copper traces, one for silkscreen, one for soldermask, one for drill holes. Stack them all together and you have a complete manufacturing blueprint.</p>
+    <p>Your EDA tool (KiCad, Altium, Eagle, OrCAD) generates these files from your PCB layout. The manufacturer's CAM software reads them to create the photolithography masks, drill programs, and inspection routines.</p>
+
+    <h2>File Extensions Decoded</h2>
+    <table>
+        <tr><th>Extension</th><th>Layer</th><th>What It Contains</th></tr>
+        <tr><td><code>.gtl</code> / <code>.F_Cu.gbr</code></td><td>Front Copper</td><td>All traces, pads, and copper fills on the top layer</td></tr>
+        <tr><td><code>.gbl</code> / <code>.B_Cu.gbr</code></td><td>Back Copper</td><td>All traces, pads, and copper fills on the bottom layer</td></tr>
+        <tr><td><code>.gts</code> / <code>.F_Mask.gbr</code></td><td>Front Soldermask</td><td>Areas where soldermask is REMOVED (exposed copper)</td></tr>
+        <tr><td><code>.gbs</code> / <code>.B_Mask.gbr</code></td><td>Back Soldermask</td><td>Areas where soldermask is REMOVED on back</td></tr>
+        <tr><td><code>.gto</code> / <code>.F_Silk.gbr</code></td><td>Front Silkscreen</td><td>Text, logos, component outlines on top</td></tr>
+        <tr><td><code>.gbo</code> / <code>.B_Silk.gbr</code></td><td>Back Silkscreen</td><td>Text and graphics on bottom</td></tr>
+        <tr><td><code>.gtp</code> / <code>.F_Paste.gbr</code></td><td>Front Paste</td><td>Stencil openings for solder paste (SMT assembly only)</td></tr>
+        <tr><td><code>.gbp</code> / <code>.B_Paste.gbr</code></td><td>Back Paste</td><td>Stencil openings for back-side SMT</td></tr>
+        <tr><td><code>.gko</code> / <code>.Edge_Cuts.gbr</code></td><td>Board Outline</td><td>The physical shape of the PCB — dimensions and cutouts</td></tr>
+        <tr><td><code>.drl</code></td><td>Drill File</td><td>Hole positions, sizes, and whether they're plated (PTH) or non-plated (NPTH)</td></tr>
+        <tr><td><code>.gbrjob</code></td><td>Job File</td><td>Metadata — layer stackup, board size, materials (X2 format)</td></tr>
+    </table>
+
+    <h3>Legacy vs X2 Naming</h3>
+    <p>Older tools use the 3-letter extensions (.gtl, .gbl). KiCad 6+ and modern tools use descriptive names (.F_Cu.gbr, .B_Cu.gbr). Both are valid Gerber — the manufacturer's CAM handles either. Just be consistent within a single export.</p>
+
+    <h2>The Pre-Flight Checklist</h2>
+    <p>Before you send Gerbers to any manufacturer, verify these items. Most delays and quality issues come from mistakes in this list.</p>
+
+    <h3>1. Board Outline Is Closed</h3>
+    <p>Open the Edge_Cuts file in a Gerber viewer. The outline must be a closed polygon with no gaps. A 1μm gap means the manufacturer can't define the board boundary. Use "measure" tools to check corners meet exactly.</p>
+
+    <h3>2. All Layers Present</h3>
+    <p>For a 2-layer board, you need minimum: F_Cu, B_Cu, F_Mask, B_Mask, F_Silk, B_Silk, Edge_Cuts, and drill files. Missing a silkscreen layer isn't critical. Missing a copper layer is. Missing the board outline means they literally can't cut your board.</p>
+
+    <h3>3. Drill File Format</h3>
+    <p>Two formats exist: Excellon (most common) and Gerber X2 drill. Check that:
+    </p><ul>
+        <li>Units are specified (mm vs mil — mismatch causes 25.4x size errors)</li>
+        <li>Leading zeros are consistent (missing leading zeros = offset pads)</li>
+        <li>PTH and NPTH are in the same file or clearly separated</li>
+    </ul>
+
+    <h3>4. Copper-to-Edge Clearance</h3>
+    <p>Minimum 0.2mm (8mil) from any copper feature to the board edge. Closer than that and the routing bit may cut into traces. For cost reduction, 0.3mm is safer.</p>
+
+    <h3>5. Soldermask Slivers</h3>
+    <p>Check for narrow strips of soldermask between pads. If the gap is less than 0.1mm, the mask will peel during manufacturing. Your DRC should catch this, but visual inspection in a Gerber viewer catches what DRC misses.</p>
+
+    <h2>Tools for Viewing Gerbers</h2>
+    <ul>
+        <li><strong>Gerber Viewer (free, online):</strong> <a href="https://gerbview.org">gerbview.org</a> — drag-and-drop ZIP, instant visualization</li>
+        <li><strong>KiCad GerbView:</strong> Built into KiCad — open File → Fabrication Outputs → View</li>
+        <li><strong>Altium PCB Viewer:</strong> Free online tool from Altium — <a href="https://www.altium.com/viewer">altium.com/viewer</a></li>
+        <li><strong>gEDA/PCB:</strong> Open source, handles Gerber natively</li>
+        <li><strong>FlatCAM:</strong> Python-based, great for CNC isolation routing workflows</li>
+    </ul>
+
+    <h2>Common Mistakes That Delay Your Order</h2>
+
+    <h3>Wrong Units</h3>
+    <p>Designing in mm but exporting drill files in inches (or vice versa). The board comes back 25.4x the wrong size. Always verify drill file units before sending.</p>
+
+    <h3>Missing Paste Layers</h3>
+    <p>If you're ordering assembly (PCBA), you need paste layers (.gtp/.gbp). Without them, the stencil can't be cut and SMT placement can't happen. Many designers forget these because they only focus on fabrication layers.</p>
+
+    <h3>Mirrored Layers</h3>
+    <p>Sometimes the back copper layer gets mirrored in export. Check that back-layer pads align with front-layer pads when overlaid. Misaligned layers = boards that can't be assembled.</p>
+
+    <h3>Inconsistent Aperture Definitions</h3>
+    <p>Older tools sometimes generate duplicate aperture codes. Modern CAM software handles this, but it can cause warnings that slow down your order. Run your Gerbers through a viewer first.</p>
+
+    <h3>Traces Too Close to Board Edge</h3>
+    <p>The router bit is typically 2-3mm wide. If your traces are within 0.2mm of the edge, there's a real chance they get cut. Move critical traces inward.</p>
+
+    <h2>KiCad Export Tips</h2>
+    <ul>
+        <li>Use <strong>File → Fabrication Outputs → Gerbers (.gbr)</strong> — not the legacy plot dialog</li>
+        <li>Set "Use Protel filename extensions" for maximum compatibility with fab houses</li>
+        <li>Export drill files separately via <strong>File → Fabrication Outputs → Drill Files</strong></li>
+        <li>Check "Mirror Y axis" is OFF (common mistake)</li>
+        <li>Use metric units (mm) — most Shenzhen fabs expect metric</li>
+        <li>After export, open the ZIP in GerbView and visually verify every layer</li>
+    </ul>
+
+    <h2>Altium Export Tips</h2>
+    <ul>
+        <li>Use <strong>File → Fabrication Outputs → Gerber Files</strong></li>
+        <li>For X2 format (preferred by modern CAM): Enable "Generate X2 Gerber output"</li>
+        <li>Export drill files separately via <strong>File → Fabrication Outputs → NC Drill Files</strong></li>
+        <li>Set "Units: mm" and "Format: 4:4" for metric</li>
+        <li>Include the .gbrjob file — it contains layer mapping metadata</li>
+    </ul>
+
+    <h2>What Manufacturers Actually Check</h2>
+    <p>When we receive Gerbers, here's our internal checklist:</p>
+    <ul>
+        <li>✅ Board outline closed and dimensionally correct</li>
+        <li>✅ All copper layers present and aligned</li>
+        <li>✅ Drill file units match design units</li>
+        <li>✅ Minimum trace width meets capability (typically 0.1mm / 4mil)</li>
+        <li>✅ Minimum drill size meets capability (typically 0.15mm / 6mil)</li>
+        <li>✅ Copper-to-edge clearance adequate</li>
+        <li>✅ Soldermask expansion reasonable (typically 0.05mm per side)</li>
+        <li>✅ Silkscreen not overlapping exposed pads</li>
+        <li>✅ No unconnected copper islands that could cause shorts</li>
+    </ul>
+    <p>If all checks pass, we can have your board in production within hours. If something fails, we'll send you a DRC report with exact coordinates so you can fix it fast.</p>
+
+    <div class="cta">
+        <h3>Send Your Gerbers for a Free Check</h3>
+        <p>Not sure if your Gerbers are correct? Send us the ZIP — we'll run a full DRC and tell you exactly what needs fixing before production. No charge, no obligation.</p>
+        <a href="https://wa.me/message/XHJGCF6MS56QC1">💬 Send Gerbers via WhatsApp</a>
+        <p style="margin-top: 12px; font-size: 14px; color: #86868b;">Or email: jsdg@mayio.cloud</p>
+    </div>
+
+    <footer>
+        <p><a href="index.html" style="color: #86868b;">Mayio PCB</a> · Shenzhen-based PCB manufacturer · <a href="pcb-layer-count-guide.html" style="color: #86868b;">Layer Count</a> · <a href="aluminum-pcb-vs-fr4.html" style="color: #86868b;">Aluminum vs FR4</a> · <a href="pcb-surface-finish-guide.html" style="color: #86868b;">Surface Finish</a></p>
+    </footer>
+</div>
+</body>
+</html>
