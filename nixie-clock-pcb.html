@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nixie Tube Clock PCB — IN-14 Tube Design | Mayio PCB</title>
+    <meta name="description" content="PCB design for a Nixie tube clock using IN-14 tubes and K155ID1 drivers. High-voltage routing, multiplexed display, RTC accuracy. Complete design guide.">
+    <meta name="keywords" content="nixie tube PCB, nixie clock circuit board, IN-14 PCB design, nixie tube driver, K155ID1 PCB">
+    <meta property="og:title" content="Nixie Tube Clock PCB — IN-14 Tube Design">
+    <meta property="og:description" content="2-layer Nixie clock PCB with HV routing, K155ID1 drivers, and DS3231 RTC.">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://mayio.cloud/nixie-clock-pcb.html">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
+        nav { background: #1d1d1f; padding: 12px 20px; position: sticky; top: 0; z-index: 100; }
+        nav .inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        nav a { color: #a1a1a6; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        nav a:hover, nav a.active { color: #fff; }
+        nav .brand { color: #0071e3; font-weight: 600; margin-right: auto; }
+        .hero { background: linear-gradient(135deg, #2d1b00 0%, #4a2800 50%, #6b3a00 100%); color: white; padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 32px; margin-bottom: 12px; }
+        .hero .tagline { font-size: 18px; color: #e8a84c; margin-bottom: 24px; }
+        .hero .specs { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .hero .pill { background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 20px; font-size: 14px; backdrop-filter: blur(10px); }
+        .container { max-width: 760px; margin: 0 auto; padding: 32px 20px; }
+        h2 { font-size: 22px; margin: 32px 0 16px; color: #1d1d1f; }
+        p { margin-bottom: 14px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; }
+        th { background: #f5f5f7; font-weight: 600; }
+        .highlight { display: flex; gap: 16px; margin: 20px 0; }
+        .highlight-card { flex: 1; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .highlight-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .highlight-card p { font-size: 14px; color: #6e6e73; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+        .badge-red { background: #ffebee; color: #c62828; }
+        .badge-amber { background: #fff8e1; color: #f57f17; }
+        .consideration { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid #c62828; }
+        .consideration h3 { font-size: 16px; margin-bottom: 8px; }
+        ul { padding-left: 20px; margin: 12px 0; }
+        li { margin-bottom: 6px; font-size: 15px; }
+        .cta { text-align: center; margin-top: 40px; padding: 32px; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .cta h2 { margin-top: 0; }
+        .cta a { display: inline-block; padding: 14px 28px; background: #25d366; color: white; text-decoration: none; border-radius: 8px; font-weight: 500; margin-top: 12px; font-size: 16px; }
+        .cta a:hover { background: #20ba5a; }
+        footer { text-align: center; padding: 32px 20px; color: #86868b; font-size: 13px; }
+        footer a { color: #0071e3; }
+        @media (max-width: 600px) { .highlight { flex-direction: column; } .hero .specs { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="inner">
+            <a href="index.html" class="brand">Mayio PCB</a>
+            <a href="synth-pcb.html">Synth</a>
+            <a href="nixie-clock-pcb.html" class="active">Nixie Clock</a>
+            <a href="gameboy-pcb.html">GameBoy</a>
+            <a href="pcb-layer-count-guide.html">Guides</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>🔴 Nixie Tube Clock PCB</h1>
+        <p class="tagline">IN-14 tubes · K155ID1 BCD-to-decimal drivers · DS3231 RTC · 170V HV routing</p>
+        <div class="specs">
+            <span class="pill">120×80mm</span>
+            <span class="pill">2-Layer</span>
+            <span class="pill">ATmega328P</span>
+            <span class="pill">HASL Finish</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Project Overview</h2>
+        <p>A six-digit Nixie tube clock using Soviet-era IN-14 tubes and matching K155ID1 BCD-to-decimal driver ICs. The design runs on a single ATmega328P with a DS3231 RTC for accurate timekeeping. The trickiest part of any Nixie clock PCB: routing 170V anode supply traces with proper creepage and clearance on a standard 2-layer board.</p>
+
+        <h2>Board Specifications</h2>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Board Dimensions</td><td>120 × 80 mm</td></tr>
+            <tr><td>Layer Count</td><td>2 layers</td></tr>
+            <tr><td>Microcontroller</td><td>ATmega328P-PU (DIP-28, through-hole)</td></tr>
+            <tr><td>RTC Module</td><td>DS3231SN — ±2ppm accuracy, battery backup (CR2032)</td></tr>
+            <tr><td>Nixie Tubes</td><td>IN-14 × 6 (hand-selected, tested)</td></tr>
+            <tr><td>Tube Drivers</td><td>K155ID1 × 6 (BCD-to-decimal, HV compatible)</td></tr>
+            <tr><td>HV Supply</td><td>MC34063 boost converter: 12V → 170V (tested at 165-180V)</td></tr>
+            <tr><td>Copper Weight</td><td>1 oz (both layers)</td></tr>
+            <tr><td>Board Thickness</td><td>1.6mm FR-4</td></tr>
+            <tr><td>Surface Finish</td><td>HAL Lead-free</td></tr>
+            <tr><td>Design Tool</td><td>KiCad 8.0</td></tr>
+        </table>
+
+        <h2>Design Highlights</h2>
+        <div class="highlight">
+            <div class="highlight-card">
+                <span class="badge badge-red">High Voltage</span>
+                <h3>170V HV Trace Routing</h3>
+                <p>Nixie tubes require 170V DC anode supply. On a 2-layer board, this means the HV traces share layers with low-voltage digital signals. Key layout decisions: minimum 1.5mm clearance between HV and LV traces (vs standard 0.2mm), separate HV trace zone on the right side of the board, and no copper pours under the HV section to prevent capacitive coupling.</p>
+            </div>
+            <div class="highlight-card">
+                <span class="badge badge-amber">Display</span>
+                <h3>Multiplexed Tube Display</h3>
+                <p>Instead of 6 × K155ID1 driving each tube independently (which would need 24 GPIO pins), the design multiplexes: one K155ID1 handles all cathodes (0-9), while transistors switch individual tube anodes in sequence at 1kHz. This reduces MCU pins from 24 to 10 and lowers power consumption by 60%.</p>
+            </div>
+        </div>
+        <ul>
+            <li><strong>K155ID1 Footprint</strong> — DIP-16 through-hole, routed with short traces to minimize HV exposure on the board surface</li>
+            <li><strong>Boost Converter Layout</strong> — MC34063 switching section isolated with a ground cutout, no copper pour beneath the inductor to reduce EMI</li>
+            <li><strong>Tube Socket Mounting</strong> — Custom footprints for IN-14 sockets (13-pin circular), with alignment holes for mechanical stability</li>
+            <li><strong>Time Setting Buttons</strong> — Two tactile switches on the front edge, debounced in firmware</li>
+            <li><strong>Clock Fallback</strong> — DS3231 battery backup maintains time for years during power-off</li>
+        </ul>
+
+        <h2>Design Considerations</h2>
+
+        <div class="consideration">
+            <h3>⚠️ Creepage and Clearance for 170V</h3>
+            <p>At 170V, standard PCB clearances are not optional. The IPC-2221B standard requires minimum 0.5mm clearance per 100V for bare board, but for reliability and safety:</p>
+            <ul>
+                <li><strong>Trace-to-trace clearance</strong>: ≥1.5mm between any HV trace and adjacent LV trace</li>
+                <li><strong>Trace-to-edge clearance</strong>: ≥2mm from board edge (for handling safety)</li>
+                <li><strong>No copper pour</strong> under the HV section — eliminates parasitic capacitance that could couple HV transients into the digital section</li>
+                <li><strong>Slot routing</strong>: A 1mm slot is cut between the HV boost converter section and the rest of the board, increasing effective creepage distance to 4mm+</li>
+            </ul>
+        </div>
+
+        <div class="consideration">
+            <h3>⚡ High-Voltage Power Supply Design</h3>
+            <p>The MC34063 boost converter is a proven topology for Nixie supplies. Key design choices:</p>
+            <ul>
+                <li><strong>Inductor</strong>: 100µH shielded, placed directly adjacent to the MC34063 with minimal loop area</li>
+                <li><strong>Feedback divider</strong>: Precision resistors (1% tolerance) set output to 170V ±5V</li>
+                <li><strong>Output capacitor</strong>: 10µF / 200V rated — oversized for longevity at elevated voltage</li>
+                <li><strong>Current limiting</strong>: 33Ω sense resistor limits inductor peak current to 350mA</li>
+                <li><strong>Soft start</strong>: RC network on the MC34063 Ipk pin prevents inrush damage to cold Nixie cathodes</li>
+            </ul>
+        </div>
+
+        <div class="consideration">
+            <h3>🔧 Multiplexing Timing</h3>
+            <p>Each of the 6 tubes is illuminated for ~167µs in sequence (1kHz refresh / 6 digits). At 170V with ~2.5mA per digit, the average current draw is only ~15mA — well within the MC34063's capability. The firmware uses Timer1 CTC mode for precise multiplexing without MCU intervention.</p>
+        </div>
+
+        <div class="cta">
+            <h2>Working on a High-Voltage PCB?</h2>
+            <p>Nixie clocks, tube amplifiers, or any project with 100V+ traces. We'll review your creepage clearances and HV routing for free.</p>
+            <a href="https://wa.me/message/XHJGCF6MS56QC1">💬 Get Quote on WhatsApp</a>
+        </div>
+
+        <footer>
+            <p><a href="index.html">Home</a> · <a href="synth-pcb.html">Synth</a> · <a href="gameboy-pcb.html">GameBoy</a> · <a href="pcb-layer-count-guide.html">Guides</a></p>
+            <p style="margin-top: 8px;">PCB manufacturing by <a href="https://mayio.cloud">Mayio PCB</a> — Direct Shenzhen manufacturer</p>
+        </footer>
+    </div>
+</body>
+</html>

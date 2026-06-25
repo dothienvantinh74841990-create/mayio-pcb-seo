@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom GameBoy PCB — Retro Handheld Console Design | Mayio PCB</title>
+    <meta name="description" content="Custom GameBoy PCB design: 150x100mm 4-layer retro handheld console board with ESP32-S3, IPS display, audio amplifier, and SD card. Professional gameboy PCB design and handheld console PCB manufacturing.">
+    <meta name="keywords" content="gameboy PCB design, handheld console PCB, retro gaming circuit board, ESP32 handheld, custom game console PCB, retro handheld PCB design">
+    <meta property="og:title" content="Custom GameBoy PCB — Retro Handheld Console Design | Mayio PCB">
+    <meta property="og:description" content="150x100mm 4-layer retro handheld console PCB featuring ESP32-S3, 2.8 inch IPS display, audio amp, and SD card slot.">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://mayio.cloud/gameboy-pcb.html">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; }
+        nav { background: white; border-bottom: 1px solid #e5e5ea; padding: 12px 20px; position: sticky; top: 0; z-index: 100; }
+        nav .nav-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        nav .brand { font-weight: 700; font-size: 16px; color: #1d1d1f; text-decoration: none; }
+        nav .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+        nav .nav-links a { text-decoration: none; color: #6e6e73; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        nav .nav-links a:hover { color: #0071e3; }
+        nav .nav-links a.active { color: #0071e3; }
+        .container { max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border-radius: 16px; padding: 40px 32px; margin-bottom: 32px; color: white; }
+        .hero .tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; background: rgba(0,113,227,0.3); color: #64b5f6; margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .hero h1 { font-size: 30px; margin-bottom: 12px; line-height: 1.3; }
+        .hero p { color: #b0bec5; font-size: 16px; max-width: 560px; }
+        .hero .specs-row { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+        .hero .spec-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 16px; font-size: 13px; }
+        .hero .spec-pill strong { display: block; font-size: 18px; color: white; }
+        .meta { color: #86868b; font-size: 14px; margin-bottom: 24px; }
+        h2 { font-size: 20px; margin: 28px 0 12px; }
+        p { margin-bottom: 14px; }
+        .comparison { display: flex; gap: 16px; margin: 20px 0; }
+        .card { flex: 1; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .card h3 { font-size: 18px; margin-bottom: 8px; }
+        .card ul { padding-left: 18px; }
+        .card li { margin-bottom: 6px; font-size: 15px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .badge-purple { background: #f3e5f5; color: #7b1fa2; }
+        .badge-orange { background: #fff3e0; color: #e65100; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e5e5ea; font-size: 14px; }
+        th { background: #f5f5f7; font-weight: 600; }
+        .highlight-list { margin: 12px 0; padding-left: 20px; }
+        .highlight-list li { margin-bottom: 10px; }
+        .highlight-list li strong { color: #0071e3; }
+        .considerations { display: grid; gap: 16px; margin: 20px 0; }
+        .consideration-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid #0071e3; }
+        .consideration-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .consideration-card p { font-size: 14px; margin-bottom: 0; }
+        .cta { text-align: center; margin-top: 32px; padding: 24px; background: white; border-radius: 12px; }
+        .cta a { display: inline-block; padding: 12px 24px; background: #25d366; color: white; text-decoration: none; border-radius: 8px; margin-top: 8px; font-weight: 500; }
+        .cta a:hover { background: #1da851; }
+        footer { text-align: center; padding: 32px 0; color: #86868b; font-size: 13px; }
+        footer a { color: #0071e3; text-decoration: none; }
+        @media (max-width: 600px) {
+            .hero { padding: 28px 20px; }
+            .hero h1 { font-size: 24px; }
+            .comparison { flex-direction: column; }
+            .hero .specs-row { flex-direction: column; }
+            nav .nav-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="brand">Mayio PCB</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="synth-pcb.html">Synth</a>
+            <a href="nixie-clock-pcb.html">Nixie Clock</a>
+            <a href="gameboy-pcb.html" class="active">GameBoy</a>
+            <a href="pcb-layer-count-guide.html">Guides</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <span class="tag">🎮 Project Showcase</span>
+        <h1>Custom GameBoy-Style Retro Handheld Console</h1>
+        <p>A complete custom gameboy PCB design featuring ESP32-S3, a vibrant IPS display, audio amplification, and SD card storage — all on a compact 150×100mm 4-layer board.</p>
+        <div class="specs-row">
+            <div class="spec-pill">
+                <strong>150×100mm</strong>
+                Board Dimensions
+            </div>
+            <div class="spec-pill">
+                <strong>4-Layer</strong>
+                PCB Stackup
+            </div>
+            <div class="spec-pill">
+                <strong>ESP32-S3</strong>
+                Main Processor
+            </div>
+            <div class="spec-pill">
+                <strong>2.8″</strong>
+                IPS Display
+            </div>
+        </div>
+    </div>
+
+    <p class="meta">Published June 2025 · 6 min read · By Mayio PCB Engineering</p>
+
+    <h2>Project Overview</h2>
+    <p>This retro gaming circuit board reimagines the classic GameBoy form factor with modern hardware. The goal: build a pocket-sized handheld console that runs custom firmware on an ESP32-S3, drives a bright IPS screen, outputs crisp audio, and reads game ROMs from an SD card — all powered by a rechargeable LiPo battery.</p>
+    <p>The entire system fits on a single <strong>4-layer PCB</strong> measuring 150×100mm, designed for compact enclosure integration with 3D-printed shell components.</p>
+
+    <!-- Specs Table -->
+    <h2>Hardware Specifications</h2>
+    <table>
+        <tr><th>Parameter</th><th>Specification</th></tr>
+        <tr><td>Board Dimensions</td><td>150 × 100 mm</td></tr>
+        <tr><td>Layer Count</td><td>4 (signal / ground / power / signal)</td></tr>
+        <tr><td>Main Processor</td><td>ESP32-S3 (dual-core 240MHz, WiFi + BLE)</td></tr>
+        <tr><td>Display</td><td>2.8 inch IPS TFT (320×240, SPI interface)</td></tr>
+        <tr><td>Audio</td><td>Class-D mono audio amplifier (PAM8403 or similar)</td></tr>
+        <tr><td>Storage</td><td>MicroSD card slot (SPI mode)</td></tr>
+        <tr><td>Battery</td><td>LiPo 3.7V 1200mAh (JST connector)</td></tr>
+        <tr><td>Charging</td><td>USB-C with TP4056 charge controller</td></tr>
+        <tr><td>Enclosure</td><td>3D printed (FDM / SLA), two-piece snap-fit shell</td></tr>
+        <tr><td>Input</td><td>D-pad, A/B buttons, Start/Select (tactile switches on flex PCB)</td></tr>
+        <tr><td>Backlight</td><td>RGB LED strip (WS2812B) behind LCD panel</td></tr>
+    </table>
+
+    <!-- Design Highlights -->
+    <h2>Design Highlights</h2>
+
+    <div class="comparison">
+        <div class="card">
+            <span class="badge badge-purple">Input System</span>
+            <h3>Flex Cable Button Routing</h3>
+            <ul>
+                <li>FPC flex cable connects D-pad and face buttons to the main PCB</li>
+                <li>Reduces mechanical stress on solder joints</li>
+                <li>Enables easier assembly and serviceability</li>
+                <li>Separate button PCB keeps traces short and clean</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="badge badge-orange">Power</span>
+            <h3>LiPo Battery Management</h3>
+            <ul>
+                <li>TP4056 charge IC with USB-C input</li>
+                <li>Low-battery cutoff at 3.3V to protect LiPo cells</li>
+                <li>LDO + buck regulator topology for 3.3V and 5V rails</li>
+                <li>Efficient power switching for 6–8 hour play sessions</li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="highlight-list">
+        <li><strong>RGB LED Backlight:</strong> WS2812B addressable RGB LEDs behind the LCD panel provide adjustable backlight color and brightness. Driven directly from an ESP32-S3 GPIO via a single-wire protocol, allowing software-controlled ambient lighting effects.</li>
+        <li><strong>4-Layer Stackup:</strong> Inner ground and power planes provide solid reference for the SPI display signals and audio traces, significantly reducing EMI compared to a 2-layer design. Critical for FCC/CE compliance.</li>
+        <li><strong>Modular Audio:</strong> Dedicated audio amplifier section with filtered power rail and short speaker traces keeps the Class-D switching noise away from the sensitive analog and RF sections.</li>
+        <li><strong>SD Card Integration:</strong> SPI-mode microSD slot with proper decoupling and 33Ω series resistors on data lines for signal integrity at high clock rates.</li>
+    </ul>
+
+    <!-- Design Considerations -->
+    <h2>Design Considerations</h2>
+
+    <div class="considerations">
+        <div class="consideration-card" style="border-left-color: #e65100;">
+            <h3>📡 Signal Integrity — Display Interface</h3>
+            <p>The 2.8″ IPS display communicates over SPI at up to 40MHz. Trace lengths for SCLK, MOSI, and CS must be matched within 5mm to prevent clock skew. A solid ground plane directly beneath the SPI traces provides a controlled return path, keeping impedance near 50Ω. Series termination resistors (22–33Ω) on the ESP32-S3 output pins dampen reflections at the higher clock rates.</p>
+        </div>
+
+        <div class="consideration-card" style="border-left-color: #2e7d32;">
+            <h3>📶 EMC — Wireless (WiFi / Bluetooth)</h3>
+            <p>The ESP32-S3's integrated WiFi and Bluetooth radios operate in the 2.4GHz band. The antenna area must be kept completely free of copper pour, components, and ground plane on all layers. A clearance zone of at least 15mm beyond the antenna edge is maintained. The 4-layer stackup helps contain EMI from the high-speed digital sections, preventing coupling into the RF frontend. Decoupling capacitors are placed within 2mm of all power pins.</p>
+        </div>
+
+        <div class="consideration-card" style="border-left-color: #1565c0;">
+            <h3>🤲 Ergonomic PCB Layout</h3>
+            <p>Component placement follows a top-down flow: display connector at top center, buttons flanking left and right, battery compartment at the bottom. This mimics the classic GameBoy weight distribution. The PCB includes mounting holes aligned with the 3D-printed enclosure's standoffs. Connector placement (USB-C at bottom, SD card on the side, speaker grille area) is coordinated with shell design to avoid interference.</p>
+        </div>
+    </div>
+
+    <h2>Why 4-Layer for This Design?</h2>
+    <p>A 2-layer board would save ~$3 per unit in fabrication costs, but introduces serious problems for this project:</p>
+    <ul class="highlight-list">
+        <li><strong>No solid ground plane</strong> — SPI signals and audio amplifier would create cross-talk without a continuous return path.</li>
+        <li><strong>WiFi/BT performance</strong> — The ESP32-S3 antenna tuning degrades significantly without proper ground reference.</li>
+        <li><strong>Power noise</strong> — The Class-D amplifier's switching harmonics would couple into the display signals on a shared layer.</li>
+        <li><strong>Routing density</strong> — With 100+ components including BGA escape for the ESP32-S3, 2-layer routing becomes impractical.</li>
+    </ul>
+    <p>For a production-ready retro handheld console PCB, 4-layer is the clear choice.</p>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Building a Handheld Console?</h2>
+        <p>Whether it's a retro gameboy PCB, custom synth, or wearable — we can review your design and manufacture boards in Shenzhen. Send us your Gerbers for a free DRC check.</p>
+        <a href="https://wa.me/message/XHJGCF6MS56QC1">💬 Get a Free Review on WhatsApp</a>
+    </div>
+
+    <footer>
+        <p>By <a href="index.html">Mayio PCB</a> — Shenzhen direct manufacturer · <a href="pcb-layer-count-guide.html">Layer Count Guide</a></p>
+    </footer>
+
+</div>
+
+</body>
+</html>

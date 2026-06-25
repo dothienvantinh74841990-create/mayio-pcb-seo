@@ -39,6 +39,15 @@
     </style>
 </head>
 <body>
+    <nav style="background:#1d1d1f;padding:12px 20px;position:sticky;top:0;z-index:100;">
+        <div style="max-width:800px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+            <a href="index.html" style="color:#0071e3;font-weight:600;text-decoration:none;font-size:14px;margin-right:auto;">Mayio PCB</a>
+            <a href="synth-pcb.html" style="color:#a1a1a6;text-decoration:none;font-size:14px;">Synth</a>
+            <a href="nixie-clock-pcb.html" style="color:#a1a1a6;text-decoration:none;font-size:14px;">Nixie Clock</a>
+            <a href="gameboy-pcb.html" style="color:#a1a1a6;text-decoration:none;font-size:14px;">GameBoy</a>
+            <a href="pcb-layer-count-guide.html" style="color:#a1a1a6;text-decoration:none;font-size:14px;">Guides</a>
+        </div>
+    </nav>
     <div class="container">
         <h1>🔧 Free PCB Calculators</h1>
         <p class="subtitle">Instant results for trace width, impedance, via sizing, and cost estimation. No signup required.</p>
@@ -373,5 +382,33 @@
     // Auto-calculate on page load
     calcTrace();
     </script>
+
+    <!-- Projects Showcase -->
+    <div style="max-width:800px;margin:0 auto;padding:20px;">
+        <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-top:24px;">
+            <h2 style="font-size:20px;margin-bottom:4px;">📂 Our Projects</h2>
+            <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Real PCBs we've designed and manufactured — full build logs with specs.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+                <a href="synth-pcb.html" style="text-decoration:none;color:inherit;border:1px solid #e5e5ea;border-radius:10px;padding:20px;transition:box-shadow 0.2s;display:block;">
+                    <div style="font-size:28px;margin-bottom:8px;">🎹</div>
+                    <div style="font-weight:600;font-size:15px;">DIY Synthesizer</div>
+                    <div style="font-size:13px;color:#6e6e73;margin-top:4px;">Eurorack module · 4-layer · STM32 + analog VCF</div>
+                </a>
+                <a href="nixie-clock-pcb.html" style="text-decoration:none;color:inherit;border:1px solid #e5e5ea;border-radius:10px;padding:20px;transition:box-shadow 0.2s;display:block;">
+                    <div style="font-size:28px;margin-bottom:8px;">🔴</div>
+                    <div style="font-weight:600;font-size:15px;">Nixie Tube Clock</div>
+                    <div style="font-size:13px;color:#6e6e73;margin-top:4px;">IN-14 tubes · 2-layer · 170V HV routing</div>
+                </a>
+                <a href="gameboy-pcb.html" style="text-decoration:none;color:inherit;border:1px solid #e5e5ea;border-radius:10px;padding:20px;transition:box-shadow 0.2s;display:block;">
+                    <div style="font-size:28px;margin-bottom:8px;">🎮</div>
+                    <div style="font-weight:600;font-size:15px;">GameBoy Handheld</div>
+                    <div style="font-size:13px;color:#6e6e73;margin-top:4px;">ARM Cortex-M7 · 4-layer · IPS display</div>
+                </a>
+            </div>
+        </div>
+        <footer style="text-align:center;padding:32px 0;color:#86868b;font-size:13px;">
+            <p>PCB manufacturing by <a href="https://mayio.cloud" style="color:#0071e3;">Mayio PCB</a> — Direct Shenzhen factory pricing</p>
+        </footer>
+    </div>
 </body>
 </html>
