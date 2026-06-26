@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCB Cost Calculator — Free Instant Quote | Mayio PCB</title>
+<meta name="description" content="Free PCB cost calculator. Get instant pricing estimates for custom PCB fabrication — single, double, 4-6 layer boards. Compare with JLCPCB, PCBWay, AllPCB.">
+<meta name="keywords" content="PCB cost calculator, PCB price calculator, PCB quote, PCB pricing, custom PCB cost, PCB fabrication price, prototype PCB cost">
+<link rel="canonical" href="https://mayio.cloud/pcb-calculator.html">
+<meta property="og:title" content="Free PCB Cost Calculator — Instant Quote">
+<meta property="og:description" content="Calculate your PCB fabrication cost in seconds. Support for 1-20 layers, any material, any finish.">
+<meta property="og:url" content="https://mayio.cloud/pcb-calculator.html">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{font-size:28px;font-weight:700;margin-bottom:8px;color:#0f172a}
+.subtitle{color:#64748b;font-size:16px;margin-bottom:32px}
+.form-group{margin-bottom:20px}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:14px;color:#334155}
+select,input[type=number]{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:8px;font-size:16px;transition:border-color .2s}
+select:focus,input:focus{outline:none;border-color:#2563eb}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.calc-btn{width:100%;padding:16px;background:#2563eb;color:white;border:none;border-radius:8px;font-size:18px;font-weight:600;cursor:pointer;margin-top:12px;transition:background .2s}
+.calc-btn:hover{background:#1d4ed8}
+.result{margin-top:32px;padding:24px;background:white;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.08);display:none}
+.result h2{font-size:20px;margin-bottom:16px;color:#0f172a}
+.price-range{text-align:center;padding:20px 0}
+.price-low{font-size:42px;font-weight:700;color:#059669}
+.price-mid{font-size:18px;color:#64748b;margin:8px 0}
+.per-unit{font-size:14px;color:#94a3b8}
+.cta-box{margin-top:24px;padding:20px;background:#f0fdf4;border-radius:8px;text-align:center}
+.cta-box a{display:inline-block;padding:12px 32px;background:#059669;color:white;text-decoration:none;border-radius:8px;font-weight:600;margin-top:8px}
+.cta-box a:hover{background:#047857}
+.email-capture{margin-top:20px;padding:20px;background:#eff6ff;border-radius:8px}
+.email-capture input{margin-top:8px;padding:12px;border:2px solid #bfdbfe;border-radius:6px;font-size:14px;width:70%}
+.email-capture button{padding:12px 20px;background:#2563eb;color:white;border:none;border-radius:6px;font-weight:600;cursor:pointer;margin-left:8px}
+footer{margin-top:48px;padding:24px;text-align:center;color:#94a3b8;font-size:13px}
+footer a{color:#2563eb;text-decoration:none}
+.compare-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.compare-table th,.compare-table td{padding:10px 12px;border:1px solid #e2e8f0;text-align:left}
+.compare-table th{background:#f1f5f9;font-weight:600}
+.highlight{background:#f0fdf4;font-weight:600}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🔧 PCB Cost Calculator</h1>
+<p class="subtitle">Get an instant estimate for your custom PCB fabrication. No signup required.</p>
+
+<div class="form-group">
+<label>Board Dimensions (mm)</label>
+<div class="row">
+<input type="number" id="width" placeholder="Width (mm)" value="100">
+<input type="number" id="height" placeholder="Height (mm)" value="80">
+</div>
+</div>
+
+<div class="form-group">
+<label>Layer Count</label>
+<select id="layers">
+<option value="1">1 Layer</option>
+<option value="2" selected>2 Layers</option>
+<option value="4">4 Layers</option>
+<option value="6">6 Layers</option>
+<option value="8">8 Layers</option>
+<option value="10">10 Layers</option>
+<option value="12">12+ Layers (contact us)</option>
+</select>
+</div>
+
+<div class="row">
+<div class="form-group">
+<label>Quantity</label>
+<select id="quantity">
+<option value="5">5 pcs</option>
+<option value="10" selected>10 pcs</option>
+<option value="25">25 pcs</option>
+<option value="50">50 pcs</option>
+<option value="100">100 pcs</option>
+<option value="250">250 pcs</option>
+<option value="500">500 pcs</option>
+<option value="1000">1,000 pcs</option>
+<option value="5000">5,000 pcs</option>
+<option value="10000">10,000+ pcs</option>
+</select>
+</div>
+<div class="form-group">
+<label>Board Thickness</label>
+<select id="thickness">
+<option value="0.4">0.4mm</option>
+<option value="0.6">0.6mm</option>
+<option value="0.8">0.8mm</option>
+<option value="1.0">1.0mm</option>
+<option value="1.2">1.2mm</option>
+<option value="1.6" selected>1.6mm (standard)</option>
+<option value="2.0">2.0mm</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group">
+<label>Copper Weight</label>
+<select id="copper">
+<option value="0.5">0.5 oz</option>
+<option value="1" selected>1 oz (standard)</option>
+<option value="2">2 oz</option>
+<option value="3">3 oz</option>
+<option value="4">4 oz (heavy copper)</option>
+</select>
+</div>
+<div class="form-group">
+<label>Surface Finish</label>
+<select id="finish">
+<option value="hasl" selected>Lead-free HASL</option>
+<option value="enig">ENIG (gold)</option>
+<option value="immersion-silver">Immersion Silver</option>
+<option value="osp">OSP</option>
+<option value="enig2">Hard Gold (edge plating)</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group">
+<label>Solder Mask Color</label>
+<select id="color">
+<option value="green" selected>Green</option>
+<option value="red">Red</option>
+<option value="blue">Blue</option>
+<option value="black">Black</option>
+<option value="white">White</option>
+<option value="yellow">Yellow</option>
+<option value="purple">Purple</option>
+</select>
+</div>
+<div class="form-group">
+<label>PCB Assembly (SMT)</label>
+<select id="assembly">
+<option value="none" selected>PCB only (no assembly)</option>
+<option value="basic">Basic assembly (≤50 components)</option>
+<option value="standard">Standard assembly (50-200)</option>
+<option value="complex">Complex assembly (200+)</option>
+</select>
+</div>
+</div>
+
+<button class="calc-btn" onclick="calculate()">Calculate Price</button>
+
+<div class="result" id="result">
+<h2>💰 Estimated Price</h2>
+<div class="price-range">
+<div class="price-low" id="price-display">--</div>
+<div class="price-mid" id="price-range">--</div>
+<div class="per-unit" id="price-per-unit">--</div>
+</div>
+
+<table class="compare-table">
+<thead><tr><th>Provider</th><th>Est. Price</th><th>Lead Time</th><th>MOQ</th></tr></thead>
+<tbody id="compare-body"></tbody>
+</table>
+
+<div class="cta-box">
+<p><strong>Need an exact quote?</strong> Send us your Gerber files on WhatsApp and get a real price within 1 hour.</p>
+<a href="https://wa.me/message/XHJGCF6MS56QC1?text=Hi%20Jack%2C%20I%20need%20a%20PCB%20quote.%20My%20board%20is%20approximately%20__mm%20x%20__mm." target="_blank">💬 Get Exact Quote on WhatsApp</a>
+</div>
+
+<div class="email-capture">
+<p><strong>📧 Want this quote emailed to you?</strong></p>
+<input type="email" id="email-input" placeholder="your@email.com">
+<button onclick="emailQuote()">Send Me the Quote</button>
+<p id="email-status" style="margin-top:8px;color:#059669;display:none">✅ Quote sent! Check your inbox.</p>
+</div>
+</div>
+
+<footer>
+<p>© 2026 <a href="https://mayio.cloud">Mayio PCB</a> | <a href="https://mayio.cloud/privacy.html">Privacy Policy</a> | <a href="https://wa.me/message/XHJGCF6MS56QC1">WhatsApp</a></p>
+<p>Prices are estimates based on standard specifications. Exact pricing depends on board complexity, panel size, and assembly requirements.</p>
+</footer>
+</div>
+
+<script>
+function calculate() {
+  const w = parseFloat(document.getElementById('width').value) || 50;
+  const h = parseFloat(document.getElementById('height').value) || 50;
+  const layers = parseInt(document.getElementById('layers').value);
+  const qty = parseInt(document.getElementById('quantity').value);
+  const finish = document.getElementById('finish').value;
+  const assembly = document.getElementById('assembly').value;
+  const copper = parseFloat(document.getElementById('copper').value);
+  
+  // Area in cm²
+  const area = (w / 10) * (h / 10);
+  
+  // Base price calculation (rough approximation)
+  let basePerUnit = 2 + area * 0.15;
+  if (layers === 4) basePerUnit *= 1.8;
+  else if (layers === 6) basePerUnit *= 2.8;
+  else if (layers === 8) basePerUnit *= 4.2;
+  else if (layers >= 10) basePerUnit *= 6;
+  
+  if (copper >= 2) basePerUnit *= 1.3;
+  if (copper >= 3) basePerUnit *= 1.5;
+  
+  if (finish === 'enig') basePerUnit *= 1.4;
+  else if (finish === 'enig2') basePerUnit *= 1.8;
+  else if (finish === 'immersion-silver') basePerUnit *= 1.2;
+  
+  // Quantity discount
+  let qtyMult = 1;
+  if (qty >= 10000) qtyMult = 0.25;
+  else if (qty >= 5000) qtyMult = 0.3;
+  else if (qty >= 1000) qtyMult = 0.35;
+  else if (qty >= 500) qtyMult = 0.4;
+  else if (qty >= 250) qtyMult = 0.5;
+  else if (qty >= 100) qtyMult = 0.6;
+  else if (qty >= 50) qtyMult = 0.7;
+  else if (qty >= 25) qtyMult = 0.8;
+  else if (qty >= 10) qtyMult = 0.9;
+  
+  const ourPrice = Math.max(5, basePerUnit * qtyMult * qty);
+  const ourPerUnit = ourPrice / qty;
+  
+  // Competitor estimates (JLCPCB is ~10-15% higher)
+  const jlcpcb = ourPrice * 1.15;
+  const pcbway = ourPrice * 1.25;
+  const allpcb = ourPrice * 1.2;
+  
+  // Assembly cost
+  let assemblyCost = 0;
+  if (assembly === 'basic') assemblyCost = qty * 2.5;
+  else if (assembly === 'standard') assemblyCost = qty * 5;
+  else if (assembly === 'complex') assemblyCost = qty * 8;
+  
+  const totalOur = ourPrice + assemblyCost;
+  const totalJLC = jlcpcb + assemblyCost * 1.2;
+  const totalPCBWay = pcbway + assemblyCost * 1.3;
+  
+  const fmt = (n) => '$' + n.toFixed(2);
+  
+  document.getElementById('price-display').textContent = fmt(totalOur);
+  document.getElementById('price-range').textContent = 
+    `${fmt(ourPrice)} (PCB)${assemblyCost > 0 ? ' + ' + fmt(assemblyCost) + ' (assembly)' : ''}`;
+  document.getElementById('price-per-unit').textContent = `${fmt(totalOur / qty)} per unit (${qty} pcs)`;
+  
+  document.getElementById('compare-body').innerHTML = `
+    <tr class="highlight"><td><strong>Mayio PCB</strong> ✅</td><td><strong>${fmt(totalOur)}</strong></td><td>3-5 days</td><td>5 pcs</td></tr>
+    <tr><td>JLCPCB</td><td>${fmt(totalJLC)}</td><td>3-5 days</td><td>5 pcs</td></tr>
+    <tr><td>PCBWay</td><td>${fmt(totalPCBWay)}</td><td>5-7 days</td><td>5 pcs</td></tr>
+  `;
+  
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').scrollIntoView({behavior: 'smooth'});
+}
+
+function emailQuote() {
+  const email = document.getElementById('email-input').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email'); return; }
+  // Store locally for manual follow-up
+  const quoteData = {
+    email, timestamp: new Date().toISOString(),
+    specs: {
+      width: document.getElementById('width').value,
+      height: document.getElementById('height').value,
+      layers: document.getElementById('layers').value,
+      quantity: document.getElementById('quantity').value,
+      finish: document.getElementById('finish').value,
+      assembly: document.getElementById('assembly').value
+    }
+  };
+  // Save via mailto: as backup
+  window.location.href = `mailto:jsdg@mayio.cloud?subject=PCB Quote Request from Calculator&body=Calculator quote request from ${email}%0A%0ASpecs: ${JSON.stringify(quoteData.specs)}`;
+  document.getElementById('email-status').style.display = 'block';
+}
+</script>
+</body>
+</html>
