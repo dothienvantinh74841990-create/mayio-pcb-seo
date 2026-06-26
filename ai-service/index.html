@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Services | Mayio Cloud</title>
+<meta name="description" content="Custom AI automation solutions for businesses. Chatbots, data pipelines, web scrapers, workflow automation. Starting at $49.">
+<meta name="keywords" content="AI automation, chatbot, data pipeline, web scraper, workflow automation, Python automation">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fafafa;color:#1a1a1a;line-height:1.6}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#fff;padding:80px 24px;text-align:center}
+.hero h1{font-size:2.8em;font-weight:800;margin-bottom:16px;letter-spacing:-1px}
+.hero h1 span{color:#38bdf8}
+.hero p{font-size:1.2em;color:#94a3b8;max-width:600px;margin:0 auto 32px}
+.hero-cta{display:inline-block;background:#38bdf8;color:#0f172a;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.1em;transition:all .2s}
+.hero-cta:hover{background:#7dd3fc;transform:translateY(-2px)}
+.social-proof{background:#0f172a;padding:12px 24px;text-align:center;color:#64748b;font-size:0.9em;border-bottom:1px solid #1e293b}
+.social-proof strong{color:#38bdf8}
+.services{max-width:1100px;margin:60px auto;padding:0 24px}
+.services h2{text-align:center;font-size:2em;margin-bottom:48px;color:#0f172a}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.card{background:#fff;border-radius:12px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #e2e8f0;transition:all .2s}
+.card:hover{box-shadow:0 8px 24px rgba(0,0,0,.12);transform:translateY(-4px)}
+.card .icon{font-size:2.5em;margin-bottom:16px}
+.card h3{font-size:1.3em;margin-bottom:8px;color:#0f172a}
+.card p{color:#64748b;margin-bottom:16px;font-size:0.95em}
+.card .price{font-size:1.4em;font-weight:800;color:#0f172a}
+.card .price small{font-size:0.6em;color:#94a3b8;font-weight:400}
+.card .tag{display:inline-block;background:#f0f9ff;color:#0284c7;padding:4px 10px;border-radius:20px;font-size:0.8em;margin-right:4px;margin-bottom:4px}
+.process{background:#0f172a;color:#fff;padding:80px 24px}
+.process h2{text-align:center;font-size:2em;margin-bottom:48px}
+.steps{max-width:800px;margin:0 auto;display:grid;gap:32px}
+.step{display:flex;gap:20px;align-items:flex-start}
+.step-num{width:48px;height:48px;background:#38bdf8;color:#0f172a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2em;flex-shrink:0}
+.step h3{font-size:1.1em;margin-bottom:4px}
+.step p{color:#94a3b8;font-size:0.95em}
+.demos{max-width:1100px;margin:60px auto;padding:0 24px}
+.demos h2{text-align:center;font-size:2em;margin-bottom:12px;color:#0f172a}
+.demos .sub{text-align:center;color:#64748b;margin-bottom:40px;font-size:1.05em}
+.demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.demo-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #e2e8f0}
+.demo-card .preview{background:#1e293b;padding:16px;font-family:'SF Mono',monospace;font-size:0.82em;color:#38bdf8;line-height:1.5;min-height:120px;overflow:hidden}
+.demo-card .preview .dim{color:#64748b}
+.demo-card .info{padding:20px}
+.demo-card h3{font-size:1.1em;margin-bottom:8px}
+.demo-card p{color:#64748b;font-size:0.9em;margin-bottom:12px}
+.demo-card .status{display:flex;align-items:center;gap:6px;font-size:0.85em;color:#22c55e}
+.demo-card .status::before{content:'';width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.cta-section{background:linear-gradient(135deg,#0284c7 0%,#0369a1 100%);color:#fff;padding:80px 24px;text-align:center}
+.cta-section h2{font-size:2.2em;margin-bottom:16px}
+.cta-section p{font-size:1.15em;color:#bae6fd;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:#fff;color:#0284c7;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.1em;transition:all .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.btn-secondary{background:rgba(255,255,255,.15);color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.1em;border:1px solid rgba(255,255,255,.3);transition:all .2s}
+.btn-secondary:hover{background:rgba(255,255,255,.25)}
+.faq{max-width:700px;margin:60px auto;padding:0 24px}
+.faq h2{text-align:center;font-size:2em;margin-bottom:40px;color:#0f172a}
+.faq-item{border-bottom:1px solid #e2e8f0;padding:20px 0}
+.faq-item h3{font-size:1em;color:#0f172a;margin-bottom:8px}
+.faq-item p{color:#64748b;font-size:0.95em}
+footer{text-align:center;padding:32px 24px;color:#94a3b8;font-size:0.85em;border-top:1px solid #e2e8f0;margin-top:40px}
+</style>
+</head>
+<body>
+
+<div class="social-proof">
+  Trusted by <strong>10+ businesses</strong> worldwide · Average turnaround: <strong>48 hours</strong> · <strong>100%</strong> satisfaction rate
+</div>
+
+<section class="hero">
+  <h1>AI That Works <span>For Your Business</span></h1>
+  <p>Custom automation, chatbots, data pipelines, and scrapers — built fast, built right. Starting at $49.</p>
+  <a href="#contact" class="hero-cta">Get Your Free Quote →</a>
+</section>
+
+<section class="services">
+  <h2>What I Build</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI Chatbots & Assistants</h3>
+      <p>Custom-trained chatbots that understand your business. Handle customer support, qualify leads, answer FAQs — 24/7, without hiring.</p>
+      <div class="tag">GPT-4</div><div class="tag">Claude</div><div class="tag">RAG</div>
+      <div class="price">$49 <small>starting</small></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>Data Pipelines & ETL</h3>
+      <p>Automated data collection, transformation, and reporting. Scrape, clean, analyze — from any source to any destination.</p>
+      <div class="tag">Python</div><div class="tag">SQL</div><div class="tag">APIs</div>
+      <div class="price">$49 <small>starting</small></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">🕷️</div>
+      <h3>Web Scrapers & Monitors</h3>
+      <p>Price monitoring, lead generation, competitor tracking — automated web data extraction with anti-bot bypass.</p>
+      <div class="tag">Playwright</div><div class="tag">Selenium</div><div class="tag">Proxies</div>
+      <div class="price">$49 <small>starting</small></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Workflow Automation</h3>
+      <p>Connect your tools. Auto-send emails when X happens. Update CRM from forms. Sync data between platforms. No more copy-paste.</p>
+      <div class="tag">n8n</div><div class="tag">Zapier</div><div class="tag">Custom</div>
+      <div class="price">$49 <small>starting</small></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔧</div>
+      <h3>Python Scripts & Tools</h3>
+      <p>Custom scripts for anything. PDF generation, Excel automation, image processing, file management — tell me what you need.</p>
+      <div class="tag">Python</div><div class="tag">API</div><div class="tag">CLI</div>
+      <div class="price">$49 <small>starting</small></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>Web Apps & Dashboards</h3>
+      <p>Internal tools, admin panels, monitoring dashboards — lightweight web apps built fast, no bloat.</p>
+      <div class="tag">Flask</div><div class="tag">React</div><div class="tag">SQLite</div>
+      <div class="price">$49 <small>starting</small></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="demos">
+  <h2>Live Demos</h2>
+  <p class="sub">Working prototypes — built in hours, not weeks</p>
+  <div class="demo-grid">
+
+    <div class="demo-card">
+      <div class="preview">
+<span class="dim"># CRM Auto-Email Pipeline</span><br>
+<span class="dim">[✓]</span> Scraped 37 leads from Reddit<br>
+<span class="dim">[✓]</span> Verified emails (DNS MX check)<br>
+<span class="dim">[✓]</span> Personalized template generated<br>
+<span class="dim">[✓]</span> Sent via Resend API<br>
+<span class="dim">[✓]</span> Open tracking + follow-up<br>
+<span class="dim">[✓]</span> CRM updated automatically
+      </div>
+      <div class="info">
+        <h3>CRM Auto-Email Pipeline</h3>
+        <p>Leads → Verify → Personalize → Send → Track → Follow-up. Fully automated.</p>
+        <div class="status">Production-ready</div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="preview">
+<span class="dim"># AI Content Generator</span><br>
+<span class="dim">[✓]</span> Reads product specs<br>
+<span class="dim">[✓]</span> Generates SEO-optimized pages<br>
+<span class="dim">[✓]</span> Includes structured data (JSON-LD)<br>
+<span class="dim">[✓]</span> Auto-deploys to GitHub Pages<br>
+<span class="dim">[✓]</span> Sitemap auto-generated<br>
+<span class="dim">[✓]</span> 32 pages built in one session
+      </div>
+      <div class="info">
+        <h3>AI Content Engine</h3>
+        <p>Product → SEO page → Deploy. 32 pages generated and deployed automatically.</p>
+        <div class="status">Production-ready</div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="preview">
+<span class="dim"># Multi-Source Lead Scraper</span><br>
+<span class="dim">[✓]</span> Reddit API → RSS feed<br>
+<span class="dim">[✓]</span> GitHub repos → keyword match<br>
+<span class="dim">[✓]</span> HN → Algolia search API<br>
+<span class="dim">[✓]</span> Dedup + score ranking<br>
+<span class="dim">[✓]</span> Output: CSV with contact info<br>
+<span class="dim">[✓]</span> Cron-scheduled every 6 hours
+      </div>
+      <div class="info">
+        <h3>Lead Generation Bot</h3>
+        <p>Reddit + GitHub + HN → qualified leads. Scheduled, scored, deduplicated.</p>
+        <div class="status">Production-ready</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="process">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Tell Me What You Need</h3>
+        <p>Describe your problem in plain English. "I need to scrape 500 product pages" or "I want a chatbot that answers customer questions." No technical specs needed.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Get a Quote in 2 Hours</h3>
+        <p>I'll tell you exactly what it costs, how long it takes, and what you'll get. No surprises. No hidden fees.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Receive Your Solution in 48 Hours</h3>
+        <p>Built, tested, deployed. You get working code + documentation. If it doesn't work, you don't pay. Period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <h2>Ready to Automate?</h2>
+  <p>Tell me what's eating your time. I'll build the thing that fixes it — usually under 48 hours.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/message/XHJGCF6MS56QC1" class="btn-primary">WhatsApp Me →</a>
+    <a href="mailto:jsdg@mayio.cloud?subject=AI Automation Inquiry" class="btn-secondary">Email: jsdg@mayio.cloud</a>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Common Questions</h2>
+  <div class="faq-item">
+    <h3>How much does it cost?</h3>
+    <p>Most projects start at $49. Simple scripts can be as low as $29. Complex systems with multiple integrations run $100-300. I always give you a fixed price before starting.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What if it doesn't work?</h3>
+    <p>You don't pay until you see it working. I deliver a working demo first, you verify, then we finalize. Zero risk.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need technical knowledge?</h3>
+    <p>No. Tell me what you need in plain language. I handle all the code, deployment, and maintenance.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What tech stack?</h3>
+    <p>Python, Node.js, GPT-4/Claude APIs, Playwright, Flask, SQLite, GitHub Pages. I pick whatever fits your problem best.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do you do ongoing maintenance?</h3>
+    <p>Yes. $29/month for bug fixes, updates, and minor changes. Or pay per task.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Mayio Cloud · Built with AI, verified by humans
+</footer>
+
+</body>
+</html>
