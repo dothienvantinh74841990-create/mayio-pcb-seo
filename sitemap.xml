@@ -26,4 +26,7 @@
         <ns0:changefreq>monthly</ns0:changefreq>
         <ns0:priority>0.9</ns0:priority>
     </ns0:url>
-<ns1:url><ns1:loc>https://mayio.cloud/pcb-calculator.html</ns1:loc><ns1:lastmod>2026-06-26</ns1:lastmod><ns1:priority>0.9</ns1:priority></ns1:url></ns0:urlset>
+<ns1:url><ns1:loc>https://mayio.cloud/pcb-calculator.html</ns1:loc><ns1:lastmod>2026-06-26</ns1:lastmod><ns1:priority>0.9</ns1:priority></ns1:url>
+<ns1:url><ns1:loc>https://mayio.cloud/prototype-pcb.html</ns1:loc><ns1:lastmod>2026-06-26</ns1:lastmod><ns1:priority>0.9</ns1:priority></ns1:url>
+<ns1:url><ns1:loc>https://mayio.cloud/pcba-assembly.html</ns1:loc><ns1:lastmod>2026-06-26</ns1:lastmod><ns1:priority>0.9</ns1:priority></ns1:url>
+</ns0:urlset>
